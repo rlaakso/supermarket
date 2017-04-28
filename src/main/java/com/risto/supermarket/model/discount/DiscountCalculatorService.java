@@ -1,7 +1,9 @@
-package com.risto.supermarket.model.supermarket;
+package com.risto.supermarket.model.discount;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.risto.supermarket.model.supermarket.ShoppingCart;
 
 /**
  * Discount calculator service to calculate discounts for items in shopping cart
@@ -16,10 +18,10 @@ public class DiscountCalculatorService {
 	 * @param discount
 	 * @return
 	 */
-	public static List<Discount> calculateDiscountFor(ShoppingCart sc, Discount discount) {
+	public static List<AbstractDiscount> calculateDiscountFor(ShoppingCart sc, AbstractDiscount discount) {
 		int matchingItemsInCart = sc.getItemCountByName(discount.getItemName());
 		int discountMultiplier = matchingItemsInCart / discount.getItemCount();
-		List<Discount> discounts = new ArrayList<>();
+		List<AbstractDiscount> discounts = new ArrayList<>();
 		for (int i = 0; i < discountMultiplier; i++) {
 			discounts.add(discount);
 		}

@@ -4,6 +4,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import com.risto.supermarket.model.discount.AbstractDiscount;
+import com.risto.supermarket.model.discount.DiscountCalculatorService;
+import com.risto.supermarket.model.stock.Item;
+import com.risto.supermarket.model.stock.Money;
+import com.risto.supermarket.model.stock.NonWeightableItemException;
+import com.risto.supermarket.model.stock.Weight;
+
 /**
  * Shopping cart for a supermarket
  * @author Risto Laakso <risto.laakso@iki.fi>
@@ -79,15 +86,15 @@ public class ShoppingCart {
 	 */
 	public Money getSavingsTotal() {
 
-		Collection<Discount> discounts = supermarket.getDiscounts();
+		Collection<AbstractDiscount> discounts = supermarket.getDiscounts();
 		
 		if (discounts.size() == 0) {
 			return Money.ZERO;
 		}
 
 		int totalSavings = 0;
-		for (Discount d : discounts) {
-			List<Discount> applyingDiscounts = DiscountCalculatorService.calculateDiscountFor(this, d);
+		for (AbstractDiscount d : discounts) {
+			List<AbstractDiscount> applyingDiscounts = DiscountCalculatorService.calculateDiscountFor(this, d);
 			int discountTotalValue = applyingDiscounts.stream().mapToInt(discount -> discount.getDiscountValue().getValue()).sum();
 			totalSavings += discountTotalValue;
 		}

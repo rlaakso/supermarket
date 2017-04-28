@@ -6,6 +6,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.risto.supermarket.model.discount.DiscountTestHelper;
+import com.risto.supermarket.model.discount.InvalidDiscountException;
+import com.risto.supermarket.model.stock.ItemNotStockedException;
+import com.risto.supermarket.model.stock.StockTestHelper;
+import com.risto.supermarket.model.stock.UnsupportedUnitException;
+
 public class SupermarketTest {
 
 	@Before
@@ -25,7 +31,7 @@ public class SupermarketTest {
 	@Test
 	public void testCanPopulateStock() throws UnsupportedUnitException, ItemNotStockedException, InvalidCurrencyException {
 		Supermarket s = new Supermarket("Zona Sul", "BRL");
-		SupermarketTestHelper.populateSupermarketStock(s, s.getCurrency());
+		StockTestHelper.populateSupermarketStock(s, s.getCurrency());
 		assertEquals("Beans", s.getItemByName("Beans").getName());
 		assertEquals(3, s.getItemCount());
 	}
@@ -33,22 +39,22 @@ public class SupermarketTest {
 	@Test
 	public void testCanPopulateDiscounts() throws InvalidDiscountException, ItemNotStockedException, UnsupportedUnitException, InvalidCurrencyException {
 		Supermarket s = new Supermarket("KaDeWe", "EUR");
-		SupermarketTestHelper.populateSupermarketStock(s, s.getCurrency());
-		SupermarketTestHelper.populateSupermarketDiscounts(s, s.getCurrency());
+		StockTestHelper.populateSupermarketStock(s, s.getCurrency());
+		DiscountTestHelper.populateSupermarketDiscounts(s, s.getCurrency());
 		assertEquals(2, s.getDiscountCount());
 	}
 	
 	@Test(expected = InvalidCurrencyException.class)
 	public void testItemCurrencyHasToMatch() throws InvalidDiscountException, ItemNotStockedException, UnsupportedUnitException, InvalidCurrencyException {
 		Supermarket s = new Supermarket("Whole Foods", "USD");
-		SupermarketTestHelper.populateSupermarketStock(s, "EUR");
+		StockTestHelper.populateSupermarketStock(s, "EUR");
 	}
 
 	@Test(expected = InvalidCurrencyException.class)
 	public void testDiscountCurrencyHasToMatch() throws InvalidDiscountException, ItemNotStockedException, UnsupportedUnitException, InvalidCurrencyException {
 		Supermarket s = new Supermarket("Whole Foods", "USD");
-		SupermarketTestHelper.populateSupermarketStock(s, "USD");
-		SupermarketTestHelper.populateSupermarketDiscounts(s, "GBP");
+		StockTestHelper.populateSupermarketStock(s, "USD");
+		DiscountTestHelper.populateSupermarketDiscounts(s, "GBP");
 	}
 
 }

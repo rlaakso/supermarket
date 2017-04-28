@@ -1,11 +1,14 @@
-package com.risto.supermarket.model.supermarket;
+package com.risto.supermarket.model.discount;
+
+import com.risto.supermarket.model.stock.Money;
+import com.risto.supermarket.model.supermarket.InvalidCurrencyException;
 
 /**
  * Create discount, e.g. 2 for £1
  * @author Risto Laakso <risto.laakso@iki.fi>
  *
  */
-public final class TwoForOnePoundDiscount extends Discount {
+public final class TwoForOnePoundDiscount extends AbstractDiscount {
 
 	// total price
 	private final Money totalPrice;

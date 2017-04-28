@@ -1,4 +1,4 @@
-package com.risto.supermarket.model.supermarket;
+package com.risto.supermarket.model.stock;
 
 /**
  * Class to represent items that are sold as wholes.
@@ -6,7 +6,7 @@ package com.risto.supermarket.model.supermarket;
  * @author Risto Laakso <risto.laakso@iki.fi>
  *
  */
-public final class SingleItem implements Item {
+final class SingleItem implements Item {
 
 	// item name
 	private final String name;

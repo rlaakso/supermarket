@@ -1,8 +1,13 @@
 package com.risto.supermarket.model.supermarket;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+
+import com.risto.supermarket.model.discount.AbstractDiscount;
+import com.risto.supermarket.model.discount.DiscountNotAvailableException;
+import com.risto.supermarket.model.discount.Discounts;
+import com.risto.supermarket.model.stock.Item;
+import com.risto.supermarket.model.stock.ItemNotStockedException;
+import com.risto.supermarket.model.stock.Stock;
 
 /**
  * Class to represent supermarket, its stock, and discounts.
@@ -18,11 +23,11 @@ public class Supermarket {
 	private final String supermarketCurrency;
 	
 	// Stock
-	private Map<String, Item> stock = new HashMap<String, Item>();
+	private final Stock stock;
 
 	// Discounts
-	private Map<String, Discount> discounts = new HashMap<String, Discount>();
-	
+	private final Discounts discounts;
+
 	/**
 	 * Construct a new supermarket
 	 * @param name
@@ -30,6 +35,8 @@ public class Supermarket {
 	public Supermarket(String name, String currency) {
 		this.name = name;
 		this.supermarketCurrency = currency;
+		this.stock = new Stock(currency);
+		this.discounts = new Discounts(currency);
 	}
 
 	/**
@@ -46,10 +53,7 @@ public class Supermarket {
 	 * @throws InvalidCurrencyException 
 	 */
 	public void addItem(Item item) throws InvalidCurrencyException {
-		if (!item.getPrice().getCurrency().equals(supermarketCurrency)) {
-			throw new InvalidCurrencyException("Supermarket currency is " + supermarketCurrency);
-		}
-		this.stock.put(item.getName(), item);
+		stock.addItemToStock(item);
 	}
 
 	/**
@@ -57,7 +61,17 @@ public class Supermarket {
 	 * @return
 	 */
 	public int getItemCount() {
-		return this.stock.size();
+		return stock.getNumberOfItemsInStock();
+	}
+
+	/**
+	 * Get stocked item by name
+	 * @param itemName
+	 * @return
+	 * @throws ItemNotStockedException 
+	 */
+	public Item getItemByName(String itemName) throws ItemNotStockedException {
+		return stock.getItemByName(itemName);
 	}
 
 	/**
@@ -65,11 +79,8 @@ public class Supermarket {
 	 * @param discount
 	 * @throws InvalidCurrencyException 
 	 */
-	public void addDiscount(Discount discount) throws InvalidCurrencyException {
-		if (!discount.getDiscountValue().getCurrency().equals(supermarketCurrency)) {
-			throw new InvalidCurrencyException("Supermarket currency is " + supermarketCurrency);
-		}
-		this.discounts.put(discount.getDiscountName(), discount);
+	public void addDiscount(AbstractDiscount discount) throws InvalidCurrencyException {
+		discounts.addDiscount(discount);
 	}
 	
 	/**
@@ -77,7 +88,7 @@ public class Supermarket {
 	 * @return
 	 */
 	public int getDiscountCount() {
-		return this.discounts.size();
+		return discounts.getNumberOfDiscounts();
 	}
 
 	/**
@@ -90,37 +101,21 @@ public class Supermarket {
 	}
 
 	/**
-	 * Get stocked item by name
-	 * @param itemName
-	 * @return
-	 * @throws ItemNotStockedException 
-	 */
-	public Item getItemByName(String itemName) throws ItemNotStockedException {
-		if (!stock.containsKey(itemName)) {
-			throw new ItemNotStockedException("Item not in stock");
-		}
-		return stock.get(itemName);
-	}
-
-	/**
 	 * Get discount by name
 	 * @param discountName
 	 * @return
 	 * @throws DiscountNotAvailableException 
 	 */
-	public Discount getDiscountByName(String discountName) throws DiscountNotAvailableException {
-		if (!discounts.containsKey(discountName)) {
-			throw new DiscountNotAvailableException("Discount not available");
-		}
-		return discounts.get(discountName);
+	public AbstractDiscount getDiscountByName(String discountName) throws DiscountNotAvailableException {
+		return discounts.getDiscountByName(discountName);
 	}
 
 	/**
 	 * Get all active discounts
 	 * @return
 	 */
-	public Collection<Discount> getDiscounts() {
-		return discounts.values();
+	public Collection<AbstractDiscount> getDiscounts() {
+		return discounts.getAllDiscounts();
 	}
 
 	/**

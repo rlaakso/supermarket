@@ -1,4 +1,6 @@
-package com.risto.supermarket.model.supermarket;
+package com.risto.supermarket.model.stock;
+
+import com.risto.supermarket.model.supermarket.SupermarketException;
 
 public class NonWeightableItemException extends SupermarketException {
 

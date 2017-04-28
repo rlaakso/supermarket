@@ -1,11 +1,13 @@
-package com.risto.supermarket.model.supermarket;
+package com.risto.supermarket.model.discount;
+
+import com.risto.supermarket.model.stock.Money;
 
 /**
  * Create discount e.g. Beans 3 for 2
  * @author Risto Laakso <risto.laakso@iki.fi>
  *
  */
-public final class ThreeForTwoDiscount extends Discount {
+public final class ThreeForTwoDiscount extends AbstractDiscount {
 
 	// freebie count
 	private final int freebieCount;

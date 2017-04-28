@@ -1,4 +1,4 @@
-package com.risto.supermarket.model.supermarket;
+package com.risto.supermarket.model.stock;
 
 /**
  * Interface for supermarket items

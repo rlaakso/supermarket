@@ -1,4 +1,6 @@
-package com.risto.supermarket.model.supermarket;
+package com.risto.supermarket.model.discount;
+
+import com.risto.supermarket.model.supermarket.SupermarketException;
 
 public class InvalidDiscountException extends SupermarketException {
 

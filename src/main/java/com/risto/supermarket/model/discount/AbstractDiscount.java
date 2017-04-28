@@ -1,11 +1,13 @@
-package com.risto.supermarket.model.supermarket;
+package com.risto.supermarket.model.discount;
+
+import com.risto.supermarket.model.stock.Money;
 
 /**
  * Discount abstract class
  * @author Risto Laakso <risto.laakso@iki.fi>
  *
  */
-public abstract class Discount {
+public abstract class AbstractDiscount {
 
 	// discount name
 	protected final String discountName;
@@ -25,7 +27,7 @@ public abstract class Discount {
 	 * @param itemName
 	 * @param itemCount
 	 */
-	public Discount(String discountName, String itemName, int itemCount, Money itemValue) {
+	public AbstractDiscount(String discountName, String itemName, int itemCount, Money itemValue) {
 		this.discountName = discountName;
 		this.itemName = itemName;
 		this.itemCount = itemCount;

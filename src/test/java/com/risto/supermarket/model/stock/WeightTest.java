@@ -1,10 +1,13 @@
-package com.risto.supermarket.model.supermarket;
+package com.risto.supermarket.model.stock;
 
 import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.risto.supermarket.model.stock.UnsupportedUnitException;
+import com.risto.supermarket.model.stock.Weight;
 
 public class WeightTest {
 

@@ -6,10 +6,13 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.risto.supermarket.model.supermarket.InvalidDiscountException;
+import com.risto.supermarket.model.discount.InvalidDiscountException;
+import com.risto.supermarket.model.stock.ItemNotStockedException;
+import com.risto.supermarket.model.stock.Money;
+import com.risto.supermarket.model.stock.NonWeightableItemException;
+import com.risto.supermarket.model.stock.UnsupportedUnitException;
 import com.risto.supermarket.model.supermarket.ShoppingCart;
 import com.risto.supermarket.model.supermarket.Supermarket;
-import com.risto.supermarket.model.supermarket.UnsupportedUnitException;
 
 public class ShoppingCartTest {
 
@@ -67,6 +70,17 @@ public class ShoppingCartTest {
 		ShoppingCart sc = createShoppingCart();
 		Money savingsTotal = sc.getSavingsTotal();
 		assertEquals(90, savingsTotal.getValue());
+	}
+
+	@Test
+	public void testCanGetCartSavingsTotalForMultipleDiscounts() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException, NonWeightableItemException, InvalidCurrencyException {		
+		ShoppingCart sc = createShoppingCart();
+		// add more items
+		SupermarketTestHelper.populateCart(sc, sc.getSupermarket());
+		SupermarketTestHelper.populateCart(sc, sc.getSupermarket());
+		// check total savings, should be multiple of 3
+		Money savingsTotal = sc.getSavingsTotal();
+		assertEquals(3*90, savingsTotal.getValue());
 	}
 
 	@Test

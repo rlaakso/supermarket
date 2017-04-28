@@ -1,11 +1,11 @@
-package com.risto.supermarket.model.supermarket;
+package com.risto.supermarket.model.stock;
 
 /**
  * Class to represent weighted items, e.g. bananas
  * @author Risto Laakso <risto.laakso@iki.fi>
  *
  */
-public final class WeightedItem implements Item {
+final class WeightedItem implements Item {
 
 	// item name
 	private final String name;
