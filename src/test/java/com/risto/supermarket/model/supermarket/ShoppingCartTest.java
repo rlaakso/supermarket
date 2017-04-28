@@ -90,6 +90,13 @@ public class ShoppingCartTest {
 	}
 
 	@Test
+	public void testTotalSavingsIsZeroWhenNoDiscountsExist() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException, InvalidCurrencyException {
+		Supermarket s = new Supermarket("ICA Maxi", "SEK");
+		ShoppingCart empty = s.createShoppingCart();
+		assertEquals(0, empty.getSavingsTotal().getValue());
+	}
+
+	@Test
 	public void testCanGetCartTotalToPay() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException, NonWeightableItemException, InvalidCurrencyException {
 		ShoppingCart sc = createShoppingCart();
 		Money totalToPay = sc.getTotalToPay();

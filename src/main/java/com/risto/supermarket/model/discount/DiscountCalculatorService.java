@@ -10,8 +10,10 @@ import com.risto.supermarket.model.supermarket.ShoppingCart;
  * @author Risto Laakso <risto.laakso@iki.fi>
  *
  */
-public class DiscountCalculatorService {
+public final class DiscountCalculatorService {
 
+	private DiscountCalculatorService() { }
+	
 	/**
 	 * Calculate total discounts for shopping cart for a single discount rule
 	 * @param sc

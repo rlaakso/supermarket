@@ -29,6 +29,12 @@ public class ItemTest {
 		assertEquals(100, soap.getPrice().getValue());
 	}
 
+	@Test(expected = NonWeightableItemException.class)
+	public void testCannotSetWeightForSingleItem() throws NonWeightableItemException, UnsupportedUnitException {
+		SingleItem soap = new SingleItem("Soap", new Money(100, "GBP"));
+		soap.setWeight(new Weight(1.00, "kg"));
+	}
+
 	@Test
 	public void testCanConstructWeightedItem() throws UnsupportedUnitException {
 		WeightedItem bananas = new WeightedItem("Bananas", new Weight(1.2, "kg"), new Money(199, "GBP"));

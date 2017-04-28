@@ -32,4 +32,11 @@ public class MoneyTest {
 		assertEquals(1500, moneyB.getValue());
 	}
 
+	@Test
+	public void testCanMultiplyMoney() {
+		Money moneyA = new Money(1000, "GBP");
+		Money moneyB = moneyA.multiply(1.50);
+		assertEquals(1500, moneyB.getValue());
+	}
+	
 }

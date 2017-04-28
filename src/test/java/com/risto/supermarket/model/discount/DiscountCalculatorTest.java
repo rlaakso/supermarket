@@ -2,6 +2,9 @@ package com.risto.supermarket.model.discount;
 
 import static org.junit.Assert.*;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Modifier;
 import java.util.List;
 
 import org.junit.After;
@@ -50,6 +53,14 @@ public class DiscountCalculatorTest {
 		List<AbstractDiscount> discounts = DiscountCalculatorService.calculateDiscountFor(sc, s.getDiscountByName("Coke 2 for £1"));
 		int totalValue = discounts.stream().mapToInt(discount -> discount.getDiscountValue().getValue()).sum();
 		assertEquals(40, totalValue);
+	}
+	
+	@Test
+	public void testConstructorIsPrivate() throws NoSuchMethodException, IllegalAccessException, InstantiationException, IllegalArgumentException, InvocationTargetException {
+	  Constructor<DiscountCalculatorService> constructor = DiscountCalculatorService.class.getDeclaredConstructor();
+	  assertTrue(Modifier.isPrivate(constructor.getModifiers()));
+	  constructor.setAccessible(true);
+	  constructor.newInstance();
 	}
 
 }
