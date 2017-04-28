@@ -60,4 +60,12 @@ public class ShoppingCart {
 				.filter(item -> item.getName().equals(itemName))
 				.count();
 	}
+
+	/**
+	 * Get cart sub-total
+	 * @return
+	 */
+	public int getSubTotal() {
+		return items.stream().mapToInt(item -> item.getPrice().getValue()).sum();
+	}
 }

@@ -14,7 +14,7 @@ public final class WeightedItem implements Item {
 	private final Weight weight;
 	
 	// item price
-	private final Money price;
+	private final Money unitPrice;
 	
 	/**
 	 * Construct new weighted item
@@ -25,7 +25,7 @@ public final class WeightedItem implements Item {
 	public WeightedItem(String name, Weight weight, Money price) {
 		this.name = name;
 		this.weight = weight;
-		this.price = price;
+		this.unitPrice = price;
 	}
 	
 	/**
@@ -49,12 +49,12 @@ public final class WeightedItem implements Item {
 	 * @return
 	 */
 	public Money getPrice() {
-		return price;
+		return new Money((int) Math.round(unitPrice.getValue() * weight.getWeight()), unitPrice.getCurrency());
 	}
 
 	@Override
 	public Item setWeight(Weight newWeight) throws NonWeightableItemException {
-		return new WeightedItem(this.name, newWeight, this.price);
+		return new WeightedItem(this.name, newWeight, this.unitPrice);
 	}
 
 }
