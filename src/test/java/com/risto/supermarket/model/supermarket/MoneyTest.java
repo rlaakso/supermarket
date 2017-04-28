@@ -17,8 +17,17 @@ public class MoneyTest {
 	}
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testCanConstructMoney() {
+		Money money = new Money(12.34, "GBP");
+		assertEquals(12.34, money.getValue());
+		assertEquals("GBP", money.getCurrency());
+	}
+	
+	@Test
+	public void testCanAddMoney() {
+		Money moneyA = new Money(10.00, "GBP");
+		Money moneyB = moneyA.add(5.00);
+		assertEquals(15.00, moneyB.getValue());
 	}
 
 }
