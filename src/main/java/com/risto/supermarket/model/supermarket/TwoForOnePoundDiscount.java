@@ -18,8 +18,8 @@ public final class TwoForOnePoundDiscount extends Discount {
 	 * @param totalPrice total price for items after discount
 	 * @throws InvalidDiscountException 
 	 */
-	public TwoForOnePoundDiscount(String discountName, String itemName, int itemCount, Money totalPrice) throws InvalidDiscountException {
-		super(discountName, itemName, itemCount);
+	public TwoForOnePoundDiscount(String discountName, String itemName, int itemCount, Money totalPrice, Money itemValue) throws InvalidDiscountException {
+		super(discountName, itemName, itemCount, itemValue);
 		this.totalPrice = totalPrice;
 		if (this.totalPrice == null || this.totalPrice.getValue() < 0) {
 			throw new InvalidDiscountException("totalPrice needs to be larger than zero");
@@ -28,5 +28,10 @@ public final class TwoForOnePoundDiscount extends Discount {
 
 	public Money getTotalPrice() {
 		return totalPrice;
+	}
+
+	@Override
+	public Money getDiscountValue() {
+		return new Money(itemValue.getValue() * itemCount - totalPrice.getValue(), itemValue.getCurrency());
 	}
 }

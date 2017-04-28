@@ -2,9 +2,10 @@ package com.risto.supermarket.model.supermarket;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class DiscountCalculatorTest {
@@ -18,9 +19,25 @@ public class DiscountCalculatorTest {
 	}
 
 	@Test
-	@Ignore
-	public void test() {
-		fail("Not yet implemented");
+	public void testCanApplyTwoForOneDiscount() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException, NonWeightableItemException, DiscountNotAvailableException {
+		Supermarket s = SupermarketTestHelper.createSupermarket();
+		ShoppingCart sc = s.createShoppingCart();
+		SupermarketTestHelper.populateCart(sc, s);
+
+		List<Discount> discounts = DiscountCalculatorService.calculateDiscountFor(sc, s.getDiscountByName("Beans 3 for 2"));
+		int totalValue = discounts.stream().mapToInt(discount -> discount.getDiscountValue().getValue()).sum();
+		assertEquals(50, totalValue);
+	}
+	
+	@Test
+	public void testCanApplyTwoForOnePoundDiscount() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException, NonWeightableItemException, DiscountNotAvailableException {
+		Supermarket s = SupermarketTestHelper.createSupermarket();
+		ShoppingCart sc = s.createShoppingCart();
+		SupermarketTestHelper.populateCart(sc, s);
+
+		List<Discount> discounts = DiscountCalculatorService.calculateDiscountFor(sc, s.getDiscountByName("Coke 2 for £1"));
+		int totalValue = discounts.stream().mapToInt(discount -> discount.getDiscountValue().getValue()).sum();
+		assertEquals(40, totalValue);
 	}
 
 }

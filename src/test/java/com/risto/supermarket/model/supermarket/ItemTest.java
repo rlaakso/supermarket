@@ -28,7 +28,7 @@ public class ItemTest {
 		WeightedItem bananas = new WeightedItem("Bananas", new Weight(1.2, "kg"), new Money(199, "GBP"));
 		assertEquals("Bananas", bananas.getName());
 		assertEquals(1.2, bananas.getWeight().getWeight(), 1e-5);
-		assertEquals(199, bananas.getPrice().getValue());
+		assertEquals(239, bananas.getPrice().getValue());
 	}
 	
 }

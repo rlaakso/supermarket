@@ -1,6 +1,7 @@
 package com.risto.supermarket.model.supermarket;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -65,7 +66,49 @@ public class ShoppingCart {
 	 * Get cart sub-total
 	 * @return
 	 */
-	public int getSubTotal() {
-		return items.stream().mapToInt(item -> item.getPrice().getValue()).sum();
+	public Money getSubTotal() {
+		if (items.size() == 0) {
+			return Money.ZERO;
+		}
+		return new Money(items.stream().mapToInt(item -> item.getPrice().getValue()).sum(), items.get(0).getPrice().getCurrency());
+	}
+
+	/**
+	 * Get cart total savings
+	 * @return
+	 */
+	public Money getSavingsTotal() {
+
+		Collection<Discount> discounts = supermarket.getDiscounts();
+		
+		if (discounts.size() == 0) {
+			return Money.ZERO;
+		}
+
+		int totalSavings = 0;
+		for (Discount d : discounts) {
+			List<Discount> applyingDiscounts = DiscountCalculatorService.calculateDiscountFor(this, d);
+			int discountTotalValue = applyingDiscounts.stream().mapToInt(discount -> discount.getDiscountValue().getValue()).sum();
+			totalSavings += discountTotalValue;
+		}
+		return new Money(totalSavings, discounts.iterator().next().getItemValue().getCurrency());
+	}
+	
+	/**
+	 * Get supermarket this cart belongs to
+	 * @return
+	 */
+	public Supermarket getSupermarket() {
+		return supermarket;
+	}
+
+	/**
+	 * Get shopping cart total to pay
+	 * @return
+	 */
+	public Money getTotalToPay() {
+		Money subTotal = getSubTotal();
+		Money savings = getSavingsTotal();
+		return new Money(subTotal.getValue() - savings.getValue(), subTotal.getCurrency());
 	}
 }

@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class SupermarketTest {
@@ -24,19 +23,19 @@ public class SupermarketTest {
 	}
 	
 	@Test
-	public void testCanPopulateStock() throws UnsupportedUnitException {
-		StockFactory stockFactory = new StockFactory();
-		Supermarket s = new Supermarket("Aldi");
-		stockFactory.populate(s);
-		assertEquals(stockFactory.getItemCount(), s.getItemCount());
+	public void testCanPopulateStock() throws UnsupportedUnitException, ItemNotStockedException {
+		Supermarket s = new Supermarket("Zona Sul");
+		SupermarketTestHelper.populateSupermarketStock(s);
+		assertEquals("Beans", s.getItemByName("Beans").getName());
+		assertEquals(3, s.getItemCount());
 	}
 
 	@Test
-	public void testCanPopulateDiscounts() throws InvalidDiscountException {
-		DiscountFactory discountFactory = new DiscountFactory();
+	public void testCanPopulateDiscounts() throws InvalidDiscountException, ItemNotStockedException, UnsupportedUnitException {
 		Supermarket s = new Supermarket("KaDeWe");
-		discountFactory.populate(s);
-		assertEquals(discountFactory.getDiscountCount(), s.getDiscountCount());
+		SupermarketTestHelper.populateSupermarketStock(s);
+		SupermarketTestHelper.populateSupermarketDiscounts(s);
+		assertEquals(2, s.getDiscountCount());
 	}
 
 }

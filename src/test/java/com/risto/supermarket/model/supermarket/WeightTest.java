@@ -25,7 +25,7 @@ public class WeightTest {
 	
 	@Test(expected = UnsupportedUnitException.class)
 	public void testCanOnlyConstructKgWeights() throws UnsupportedUnitException {
-		Weight w = new Weight(1.200, "lbs");
+		new Weight(1.200, "lbs");
 	}
 
 }

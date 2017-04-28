@@ -8,13 +8,16 @@ package com.risto.supermarket.model.supermarket;
 public abstract class Discount {
 
 	// discount name
-	private final String discountName;
+	protected final String discountName;
 
 	// item name this discount applies to
-	private final String itemName;
+	protected final String itemName;
 	
 	// items needed for discount
-	private final int itemCount;
+	protected final int itemCount;
+
+	// item value
+	protected final Money itemValue;
 	
 	/**
 	 * Construct a new discount, which applies to itemName if there are at least itemCount of them in shopping cart.
@@ -22,10 +25,11 @@ public abstract class Discount {
 	 * @param itemName
 	 * @param itemCount
 	 */
-	public Discount(String discountName, String itemName, int itemCount) {
+	public Discount(String discountName, String itemName, int itemCount, Money itemValue) {
 		this.discountName = discountName;
 		this.itemName = itemName;
 		this.itemCount = itemCount;
+		this.itemValue = itemValue;
 	}
 	
 	/**
@@ -52,4 +56,17 @@ public abstract class Discount {
 		return itemCount;
 	}
 
+	/**
+	 * Return discount item retail value
+	 * @return
+	 */
+	public Money getItemValue() {
+		return itemValue;
+	}
+
+	/**
+	 * Get monetary value for this discount
+	 * @return
+	 */
+	public abstract Money getDiscountValue(); 
 }

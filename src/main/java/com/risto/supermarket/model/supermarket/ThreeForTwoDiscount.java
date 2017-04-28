@@ -18,8 +18,8 @@ public final class ThreeForTwoDiscount extends Discount {
 	 * @param forCount number of items to be paid
 	 * @throws InvalidDiscountException 
 	 */
-	public ThreeForTwoDiscount(String discountName, String itemName, int itemCount, int forCount) throws InvalidDiscountException {
-		super(discountName, itemName, itemCount);
+	public ThreeForTwoDiscount(String discountName, String itemName, int itemCount, int forCount, Money itemValue) throws InvalidDiscountException {
+		super(discountName, itemName, itemCount, itemValue);
 		this.freebieCount = itemCount - forCount;
 		if (this.freebieCount <= 0) {
 			throw new InvalidDiscountException("forCount needs to be less than itemCount");
@@ -32,6 +32,11 @@ public final class ThreeForTwoDiscount extends Discount {
 	 */
 	public int getFreebieCount() {
 		return freebieCount;
+	}
+
+	@Override
+	public Money getDiscountValue() {
+		return new Money(itemValue.getValue() * freebieCount, itemValue.getCurrency());
 	}
 	
 }

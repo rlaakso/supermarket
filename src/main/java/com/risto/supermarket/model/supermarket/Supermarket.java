@@ -1,5 +1,6 @@
 package com.risto.supermarket.model.supermarket;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -87,5 +88,26 @@ public class Supermarket {
 			throw new ItemNotStockedException("Item not in stock");
 		}
 		return stock.get(itemName);
+	}
+
+	/**
+	 * Get discount by name
+	 * @param discountName
+	 * @return
+	 * @throws DiscountNotAvailableException 
+	 */
+	public Discount getDiscountByName(String discountName) throws DiscountNotAvailableException {
+		if (!discounts.containsKey(discountName)) {
+			throw new DiscountNotAvailableException("Discount not available");
+		}
+		return discounts.get(discountName);
+	}
+
+	/**
+	 * Get all active discounts
+	 * @return
+	 */
+	public Collection<Discount> getDiscounts() {
+		return discounts.values();
 	}
 }

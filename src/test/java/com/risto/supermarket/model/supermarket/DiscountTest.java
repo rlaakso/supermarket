@@ -18,7 +18,7 @@ public class DiscountTest {
 
 	@Test
 	public void testCanConstructThreeForTwoDiscount() throws InvalidDiscountException {
-		ThreeForTwoDiscount d = new ThreeForTwoDiscount("Beans 3 for 2", "Beans", 3, 2);
+		ThreeForTwoDiscount d = new ThreeForTwoDiscount("Beans 3 for 2", "Beans", 3, 2, new Money(100, "GBP"));
 		assertEquals("Beans", d.getItemName());
 		assertEquals(3, d.getItemCount());
 		assertEquals(1, d.getFreebieCount());
@@ -26,12 +26,12 @@ public class DiscountTest {
 	
 	@Test(expected = InvalidDiscountException.class)
 	public void testInvalidThreeForTwoDiscount() throws InvalidDiscountException {
-		ThreeForTwoDiscount d = new ThreeForTwoDiscount("Beans 3 for 4", "Beans", 3, 4);
+		new ThreeForTwoDiscount("Beans 3 for 4", "Beans", 3, 4, new Money(100, "GBP"));
 	}
 	
 	@Test
 	public void testCanConstructTwoForOnePoundDiscount() throws InvalidDiscountException {
-		TwoForOnePoundDiscount d = new TwoForOnePoundDiscount("Coke 2 for £1", "Coke", 2, new Money(100, "GBP"));
+		TwoForOnePoundDiscount d = new TwoForOnePoundDiscount("Coke 2 for £1", "Coke", 2, new Money(100, "GBP"), new Money(100, "GBP"));
 		assertEquals("Coke", d.getItemName());
 		assertEquals(2, d.getItemCount());
 		assertEquals(100, d.getTotalPrice().getValue());
@@ -39,6 +39,6 @@ public class DiscountTest {
 	
 	@Test(expected = InvalidDiscountException.class)
 	public void testInvalidTwoForOnePoundDiscount() throws InvalidDiscountException {
-		TwoForOnePoundDiscount d = new TwoForOnePoundDiscount("Coke 2 for -£1", "Coke", 2, new Money(-100, "GBP"));
+		new TwoForOnePoundDiscount("Coke 2 for -£1", "Coke", 2, new Money(-100, "GBP"), new Money(100, "GBP"));
 	}
 }

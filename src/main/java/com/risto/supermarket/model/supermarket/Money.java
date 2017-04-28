@@ -12,6 +12,9 @@ public final class Money {
 	// ISO 4217 currency, e.g. GBP
 	private final String currency;
 	
+	// Zero money
+	public static final Money ZERO = new Money(0, "GBP");
+	
 	/**
 	 * Construct new immutable money value object
 	 * @param value Monetary value in pennies/cents, e.g. 100 for £1.00
