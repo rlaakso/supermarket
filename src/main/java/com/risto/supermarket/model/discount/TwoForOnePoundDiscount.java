@@ -24,12 +24,12 @@ public final class TwoForOnePoundDiscount extends AbstractDiscount {
 	 */
 	public TwoForOnePoundDiscount(String discountName, String itemName, int itemCount, Money totalPrice, Money itemValue) throws InvalidDiscountException, InvalidCurrencyException {
 		super(discountName, itemName, itemCount, itemValue);
-		if (!totalPrice.getCurrency().equals(itemValue.getCurrency())) {
-			throw new InvalidCurrencyException("Discount currency " + totalPrice.getCurrency() + " does not match item price currency " + itemValue.getCurrency());
-		}
 		this.totalPrice = totalPrice;
 		if (this.totalPrice == null || this.totalPrice.getValue() < 0) {
 			throw new InvalidDiscountException("totalPrice needs to be larger than zero");
+		}
+		if (!totalPrice.getCurrency().equals(itemValue.getCurrency())) {
+			throw new InvalidCurrencyException("Discount currency " + totalPrice.getCurrency() + " does not match item price currency " + itemValue.getCurrency());
 		}
 	}
 

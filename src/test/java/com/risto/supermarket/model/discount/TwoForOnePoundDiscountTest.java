@@ -7,7 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.risto.supermarket.model.discount.InvalidDiscountException;
-import com.risto.supermarket.model.discount.ThreeForTwoDiscount;
 import com.risto.supermarket.model.discount.TwoForOnePoundDiscount;
 import com.risto.supermarket.model.stock.Money;
 import com.risto.supermarket.model.supermarket.InvalidCurrencyException;
