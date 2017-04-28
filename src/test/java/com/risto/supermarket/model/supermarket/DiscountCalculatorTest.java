@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class DiscountCalculatorTest {
@@ -17,6 +18,7 @@ public class DiscountCalculatorTest {
 	}
 
 	@Test
+	@Ignore
 	public void test() {
 		fail("Not yet implemented");
 	}

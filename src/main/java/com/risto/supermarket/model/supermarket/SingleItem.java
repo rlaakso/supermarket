@@ -1,5 +1,42 @@
 package com.risto.supermarket.model.supermarket;
 
-public class SingleItem implements Item {
+/**
+ * Class to represent items that are sold as wholes.
+ * 
+ * @author Risto Laakso <risto.laakso@iki.fi>
+ *
+ */
+public final class SingleItem implements Item {
 
+	// item name
+	private final String name;
+	
+	// item price
+	private final Money price;
+	
+	/**
+	 * Construct a new single item
+	 * @param name item name
+	 * @param price item price
+	 */
+	public SingleItem(String name, Money price) {
+		this.name = name;
+		this.price = price;
+	}
+
+	/**
+	 * Get item name
+	 * @return
+	 */
+	public String getName() {
+		return name;
+	}
+	
+	/**
+	 * Get item price
+	 * @return
+	 */
+	public Money getPrice() {
+		return price;
+	}
 }

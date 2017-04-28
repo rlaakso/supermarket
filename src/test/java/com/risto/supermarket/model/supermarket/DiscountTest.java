@@ -19,21 +19,21 @@ public class DiscountTest {
 	@Test
 	public void testCanConstructPercentageDiscount() {
 		PercentageDiscount d = new PercentageDiscount(5.00);
-		assertEquals(5.00, d.getDiscountAmount());
+		assertEquals(5.00, d.getDiscount(), 1e-5);
 	}
 
 	@Test
 	public void testCanConstructFixedDiscount() {
-		FixedDiscount d = new FixedDiscount(1.00);
-		assertEquals(1.00, d.getDiscountAmount());
+		FixedDiscount d = new FixedDiscount(100);
+		assertEquals(100, d.getDiscount());
 	}
 	
 	@Test
 	public void testCanApplyFixedDiscount() {
-		FixedDiscount d = new FixedDiscount(1.00);
-		Money billTotal = new Money(10.00, "GBP");
-		Money discountedTotal = d.applyTo(billTotal);
-		assertEquals(9.00, discountedTotal.getValue());
+		FixedDiscount d = new FixedDiscount(100);
+		SingleItem item = new SingleItem("10-pack of soap", new Money(1000, "GBP"));
+		Money discountedTotal = d.applyTo(item);
+		assertEquals(900, discountedTotal.getValue());
 	}
 	
 

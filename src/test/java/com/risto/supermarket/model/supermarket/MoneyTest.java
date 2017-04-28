@@ -18,16 +18,16 @@ public class MoneyTest {
 
 	@Test
 	public void testCanConstructMoney() {
-		Money money = new Money(12.34, "GBP");
-		assertEquals(12.34, money.getValue());
+		Money money = new Money(1234, "GBP");
+		assertEquals(1234, money.getValue());
 		assertEquals("GBP", money.getCurrency());
 	}
 	
 	@Test
 	public void testCanAddMoney() {
-		Money moneyA = new Money(10.00, "GBP");
-		Money moneyB = moneyA.add(5.00);
-		assertEquals(15.00, moneyB.getValue());
+		Money moneyA = new Money(1000, "GBP");
+		Money moneyB = moneyA.add(500);
+		assertEquals(1500, moneyB.getValue());
 	}
 
 }

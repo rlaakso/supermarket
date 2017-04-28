@@ -18,17 +18,17 @@ public class ItemTest {
 
 	@Test
 	public void testCanConstructSingleItem() {
-		SingleItem soap = new SingleItem("Soap", new Money(1.00, "GBP"));
+		SingleItem soap = new SingleItem("Soap", new Money(100, "GBP"));
 		assertEquals("Soap", soap.getName());
-		assertEquals(1.00, soap.getPrice().getValue());
+		assertEquals(100, soap.getPrice().getValue());
 	}
 
 	@Test
-	public void testCanConstructWeightedItem() {
-		WeightedItem bananas = new WeightedItem("Bananas", new Weight(1.2, "kg"), new Money(1.99, "GBP"));
+	public void testCanConstructWeightedItem() throws UnsupportedUnitException {
+		WeightedItem bananas = new WeightedItem("Bananas", new Weight(1.2, "kg"), new Money(199, "GBP"));
 		assertEquals("Bananas", bananas.getName());
-		assertEquals(1.2, bananas.getWeight().getValue());
-		assertEquals(1.99, bananas.getPrice().getValue());
+		assertEquals(1.2, bananas.getWeight().getWeight(), 1e-5);
+		assertEquals(199, bananas.getPrice().getValue());
 	}
-
+	
 }
