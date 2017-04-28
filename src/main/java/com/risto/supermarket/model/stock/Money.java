@@ -11,10 +11,7 @@ public final class Money {
 	private final int value;
 	// ISO 4217 currency, e.g. GBP
 	private final String currency;
-	
-	// Zero money
-	public static final Money ZERO = new Money(0, "GBP");
-	
+		
 	/**
 	 * Construct new immutable money value object
 	 * @param value Monetary value in pennies/cents, e.g. 100 for £1.00
@@ -61,4 +58,12 @@ public final class Money {
 		return new Money((int) Math.round(this.value * factor), this.currency);
 	}
 
+	/**
+	 * Construct zero monetary value.
+	 * @param currency
+	 * @return
+	 */
+	public static Money zero(String currency) {
+		return new Money(0, currency);
+	}
 }

@@ -75,7 +75,7 @@ public class ShoppingCart {
 	 */
 	public Money getSubTotal() {
 		if (items.size() == 0) {
-			return Money.ZERO;
+			return Money.zero(supermarket.getCurrency());
 		}
 		return new Money(items.stream().mapToInt(item -> item.getPrice().getValue()).sum(), items.get(0).getPrice().getCurrency());
 	}
@@ -89,7 +89,7 @@ public class ShoppingCart {
 		Collection<AbstractDiscount> discounts = supermarket.getDiscounts();
 		
 		if (discounts.size() == 0) {
-			return Money.ZERO;
+			return Money.zero(supermarket.getCurrency());
 		}
 
 		int totalSavings = 0;
