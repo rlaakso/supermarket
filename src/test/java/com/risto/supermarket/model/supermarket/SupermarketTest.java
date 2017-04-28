@@ -32,7 +32,7 @@ public class SupermarketTest {
 	}
 
 	@Test
-	public void testCanPopulateDiscounts() {
+	public void testCanPopulateDiscounts() throws InvalidDiscountException {
 		DiscountFactory discountFactory = new DiscountFactory();
 		Supermarket s = new Supermarket("KaDeWe");
 		discountFactory.populate(s);

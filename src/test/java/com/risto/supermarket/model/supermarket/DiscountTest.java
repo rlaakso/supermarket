@@ -17,24 +17,28 @@ public class DiscountTest {
 	}
 
 	@Test
-	public void testCanConstructPercentageDiscount() {
-		PercentageDiscount d = new PercentageDiscount(5.00);
-		assertEquals(5.00, d.getDiscount(), 1e-5);
+	public void testCanConstructThreeForTwoDiscount() throws InvalidDiscountException {
+		ThreeForTwoDiscount d = new ThreeForTwoDiscount("Beans 3 for 2", "Beans", 3, 2);
+		assertEquals("Beans", d.getItemName());
+		assertEquals(3, d.getItemCount());
+		assertEquals(1, d.getFreebieCount());
 	}
-
-	@Test
-	public void testCanConstructFixedDiscount() {
-		FixedDiscount d = new FixedDiscount(100);
-		assertEquals(100, d.getDiscount());
+	
+	@Test(expected = InvalidDiscountException.class)
+	public void testInvalidThreeForTwoDiscount() throws InvalidDiscountException {
+		ThreeForTwoDiscount d = new ThreeForTwoDiscount("Beans 3 for 4", "Beans", 3, 4);
 	}
 	
 	@Test
-	public void testCanApplyFixedDiscount() {
-		FixedDiscount d = new FixedDiscount(100);
-		SingleItem item = new SingleItem("10-pack of soap", new Money(1000, "GBP"));
-		Money discountedTotal = d.applyTo(item);
-		assertEquals(900, discountedTotal.getValue());
+	public void testCanConstructTwoForOnePoundDiscount() throws InvalidDiscountException {
+		TwoForOnePoundDiscount d = new TwoForOnePoundDiscount("Coke 2 for £1", "Coke", 2, new Money(100, "GBP"));
+		assertEquals("Coke", d.getItemName());
+		assertEquals(2, d.getItemCount());
+		assertEquals(100, d.getTotalPrice().getValue());
 	}
 	
-
+	@Test(expected = InvalidDiscountException.class)
+	public void testInvalidTwoForOnePoundDiscount() throws InvalidDiscountException {
+		TwoForOnePoundDiscount d = new TwoForOnePoundDiscount("Coke 2 for -£1", "Coke", 2, new Money(-100, "GBP"));
+	}
 }

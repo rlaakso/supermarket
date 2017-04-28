@@ -56,7 +56,7 @@ public class Supermarket {
 	 * @param discount
 	 */
 	public void addDiscount(Discount discount) {
-		this.discounts.put(discount.getName(), discount);
+		this.discounts.put(discount.getDiscountName(), discount);
 	}
 	
 	/**

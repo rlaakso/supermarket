@@ -1,21 +1,55 @@
 package com.risto.supermarket.model.supermarket;
 
 /**
- * Discount interface
+ * Discount abstract class
  * @author Risto Laakso <risto.laakso@iki.fi>
  *
  */
-public interface Discount {
+public abstract class Discount {
+
+	// discount name
+	private final String discountName;
+
+	// item name this discount applies to
+	private final String itemName;
+	
+	// items needed for discount
+	private final int itemCount;
+	
 	/**
-	 * Apply discount to items price
-	 * @param item
+	 * Construct a new discount, which applies to itemName if there are at least itemCount of them in shopping cart.
+	 * @param discountName
+	 * @param itemName
+	 * @param itemCount
+	 */
+	public Discount(String discountName, String itemName, int itemCount) {
+		this.discountName = discountName;
+		this.itemName = itemName;
+		this.itemCount = itemCount;
+	}
+	
+	/**
+	 * Return discount name
 	 * @return
 	 */
-	public Money applyTo(Item item);
+	public String getDiscountName() {
+		return discountName;
+	}
 
 	/**
-	 * Get discount name
+	 * Return item name
 	 * @return
 	 */
-	public String getName();
+	public String getItemName() {
+		return itemName;
+	}
+
+	/**
+	 * Return item count needed for discount
+	 * @return
+	 */
+	public int getItemCount() {
+		return itemCount;
+	}
+
 }
