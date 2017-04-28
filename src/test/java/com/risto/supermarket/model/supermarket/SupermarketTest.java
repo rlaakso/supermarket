@@ -18,9 +18,25 @@ public class SupermarketTest {
 	}
 
 	@Test
-	@Ignore
-	public void test() {
-		fail("Not yet implemented");
+	public void testCanConstructSupermarket() {
+		Supermarket s = new Supermarket("Sainsburys");
+		assertEquals("Sainsburys", s.getName());
+	}
+	
+	@Test
+	public void testCanPopulateStock() {
+		StockFactory stockFactory = new StockFactory();
+		Supermarket s = new Supermarket("Aldi");
+		stockFactory.populate(s);
+		assertEquals(stockFactory.getItemCount(), s.getItemCount());
+	}
+
+	@Test
+	public void testCanPopulateDiscounts() {
+		DiscountFactory discountFactory = new DiscountFactory();
+		Supermarket s = new Supermarket("KaDeWe");
+		discountFactory.populate(s);
+		assertEquals(discountFactory.getDiscountCount(), s.getDiscountCount());
 	}
 
 }
