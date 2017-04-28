@@ -19,7 +19,7 @@ public class DiscountCalculatorTest {
 	}
 
 	@Test
-	public void testCanApplyTwoForOneDiscount() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException, NonWeightableItemException, DiscountNotAvailableException {
+	public void testCanApplyTwoForOneDiscount() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException, NonWeightableItemException, DiscountNotAvailableException, InvalidCurrencyException {
 		Supermarket s = SupermarketTestHelper.createSupermarket();
 		ShoppingCart sc = s.createShoppingCart();
 		SupermarketTestHelper.populateCart(sc, s);
@@ -30,7 +30,7 @@ public class DiscountCalculatorTest {
 	}
 	
 	@Test
-	public void testCanApplyTwoForOnePoundDiscount() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException, NonWeightableItemException, DiscountNotAvailableException {
+	public void testCanApplyTwoForOnePoundDiscount() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException, NonWeightableItemException, DiscountNotAvailableException, InvalidCurrencyException {
 		Supermarket s = SupermarketTestHelper.createSupermarket();
 		ShoppingCart sc = s.createShoppingCart();
 		SupermarketTestHelper.populateCart(sc, s);

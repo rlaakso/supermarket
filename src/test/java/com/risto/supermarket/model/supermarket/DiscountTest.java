@@ -30,7 +30,7 @@ public class DiscountTest {
 	}
 	
 	@Test
-	public void testCanConstructTwoForOnePoundDiscount() throws InvalidDiscountException {
+	public void testCanConstructTwoForOnePoundDiscount() throws InvalidDiscountException, InvalidCurrencyException {
 		TwoForOnePoundDiscount d = new TwoForOnePoundDiscount("Coke 2 for £1", "Coke", 2, new Money(100, "GBP"), new Money(100, "GBP"));
 		assertEquals("Coke", d.getItemName());
 		assertEquals(2, d.getItemCount());
@@ -38,7 +38,12 @@ public class DiscountTest {
 	}
 	
 	@Test(expected = InvalidDiscountException.class)
-	public void testInvalidTwoForOnePoundDiscount() throws InvalidDiscountException {
+	public void testInvalidTwoForOnePoundDiscount() throws InvalidDiscountException, InvalidCurrencyException {
 		new TwoForOnePoundDiscount("Coke 2 for -£1", "Coke", 2, new Money(-100, "GBP"), new Money(100, "GBP"));
+	}
+
+	@Test(expected = InvalidCurrencyException.class)
+	public void testInvalidCurrencyForDiscount() throws InvalidDiscountException, InvalidCurrencyException {
+		new TwoForOnePoundDiscount("Coke 2 for -£1", "Coke", 2, new Money(-100, "EUR"), new Money(100, "GBP"));
 	}
 }

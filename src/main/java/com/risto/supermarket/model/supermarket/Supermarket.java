@@ -14,6 +14,9 @@ public class Supermarket {
 	// Supermarket name
 	private final String name;
 	
+	// Supermarket currency
+	private final String supermarketCurrency;
+	
 	// Stock
 	private Map<String, Item> stock = new HashMap<String, Item>();
 
@@ -24,8 +27,9 @@ public class Supermarket {
 	 * Construct a new supermarket
 	 * @param name
 	 */
-	public Supermarket(String name) {
+	public Supermarket(String name, String currency) {
 		this.name = name;
+		this.supermarketCurrency = currency;
 	}
 
 	/**
@@ -39,8 +43,12 @@ public class Supermarket {
 	/**
 	 * Add item to stock
 	 * @param singleItem
+	 * @throws InvalidCurrencyException 
 	 */
-	public void addItem(Item item) {
+	public void addItem(Item item) throws InvalidCurrencyException {
+		if (!item.getPrice().getCurrency().equals(supermarketCurrency)) {
+			throw new InvalidCurrencyException("Supermarket currency is " + supermarketCurrency);
+		}
 		this.stock.put(item.getName(), item);
 	}
 
@@ -55,8 +63,12 @@ public class Supermarket {
 	/**
 	 * Add discount 
 	 * @param discount
+	 * @throws InvalidCurrencyException 
 	 */
-	public void addDiscount(Discount discount) {
+	public void addDiscount(Discount discount) throws InvalidCurrencyException {
+		if (!discount.getDiscountValue().getCurrency().equals(supermarketCurrency)) {
+			throw new InvalidCurrencyException("Supermarket currency is " + supermarketCurrency);
+		}
 		this.discounts.put(discount.getDiscountName(), discount);
 	}
 	
@@ -109,5 +121,13 @@ public class Supermarket {
 	 */
 	public Collection<Discount> getDiscounts() {
 		return discounts.values();
+	}
+
+	/**
+	 * Return supermarket currency
+	 * @return
+	 */
+	public String getCurrency() {
+		return supermarketCurrency;
 	}
 }

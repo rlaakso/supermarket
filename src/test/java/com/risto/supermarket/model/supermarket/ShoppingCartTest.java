@@ -22,12 +22,12 @@ public class ShoppingCartTest {
 	}
 
 	@Test
-	public void testCanConstructShoppingCart() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException {
+	public void testCanConstructShoppingCart() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException, InvalidCurrencyException {
 		Supermarket s = SupermarketTestHelper.createSupermarket();
 		s.createShoppingCart();
 	}
 	
-	private ShoppingCart createShoppingCart() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException, NonWeightableItemException {
+	private ShoppingCart createShoppingCart() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException, NonWeightableItemException, InvalidCurrencyException {
 		Supermarket s = SupermarketTestHelper.createSupermarket();
 		
 		ShoppingCart sc = s.createShoppingCart();
@@ -35,13 +35,13 @@ public class ShoppingCartTest {
 		return sc;
 	}
 	
-	private ShoppingCart createEmptyCart() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException {
+	private ShoppingCart createEmptyCart() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException, InvalidCurrencyException {
 		Supermarket s = SupermarketTestHelper.createSupermarket();
 		return s.createShoppingCart();
 	}
 	
 	@Test
-	public void testCanAddItemsToCart() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException, NonWeightableItemException {		
+	public void testCanAddItemsToCart() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException, NonWeightableItemException, InvalidCurrencyException {		
 		ShoppingCart sc = createShoppingCart();
 		assertEquals(6, sc.getItemCount());
 		assertEquals(3, sc.getItemCountByName("Beans"));
@@ -50,40 +50,40 @@ public class ShoppingCartTest {
 	}
 	
 	@Test
-	public void testCanGetCartSubTotal() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException, NonWeightableItemException {		
+	public void testCanGetCartSubTotal() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException, NonWeightableItemException, InvalidCurrencyException {		
 		ShoppingCart sc = createShoppingCart();
 		Money subTotal = sc.getSubTotal();
 		assertEquals(330, subTotal.getValue());
 	}
 
 	@Test
-	public void testSubTotalForEmptyCartIsZero() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException {
+	public void testSubTotalForEmptyCartIsZero() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException, InvalidCurrencyException {
 		ShoppingCart empty = createEmptyCart();
 		assertEquals(0, empty.getSubTotal().getValue());
 	}
 	
 	@Test
-	public void testCanGetCartSavingsTotal() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException, NonWeightableItemException {		
+	public void testCanGetCartSavingsTotal() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException, NonWeightableItemException, InvalidCurrencyException {		
 		ShoppingCart sc = createShoppingCart();
 		Money savingsTotal = sc.getSavingsTotal();
 		assertEquals(90, savingsTotal.getValue());
 	}
 
 	@Test
-	public void testTotalSavingsForEmptyCartIsZero() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException {
+	public void testTotalSavingsForEmptyCartIsZero() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException, InvalidCurrencyException {
 		ShoppingCart empty = createEmptyCart();
 		assertEquals(0, empty.getSavingsTotal().getValue());
 	}
 
 	@Test
-	public void testCanGetCartTotalToPay() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException, NonWeightableItemException {
+	public void testCanGetCartTotalToPay() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException, NonWeightableItemException, InvalidCurrencyException {
 		ShoppingCart sc = createShoppingCart();
 		Money totalToPay = sc.getTotalToPay();
 		assertEquals(240, totalToPay.getValue());	
 	}
 
 	@Test
-	public void testTotalToPayForEmptyCartIsZero() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException {
+	public void testTotalToPayForEmptyCartIsZero() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException, InvalidCurrencyException {
 		ShoppingCart empty = createEmptyCart();
 		assertEquals(0, empty.getTotalToPay().getValue());
 	}
