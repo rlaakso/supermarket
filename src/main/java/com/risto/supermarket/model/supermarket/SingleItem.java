@@ -39,4 +39,9 @@ public final class SingleItem implements Item {
 	public Money getPrice() {
 		return price;
 	}
+
+	@Override
+	public Item setWeight(Weight weight) throws NonWeightableItemException {
+		throw new NonWeightableItemException("Cannot set weight for single items");
+	}
 }

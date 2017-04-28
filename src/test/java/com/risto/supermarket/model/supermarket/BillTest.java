@@ -1,4 +1,4 @@
-package com.risto.supermarket.model.shoppingcart;
+package com.risto.supermarket.model.supermarket;
 
 import static org.junit.Assert.*;
 
@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-public class ShoppingCartTest {
+public class BillTest {
 
 	@Before
 	public void setUp() throws Exception {

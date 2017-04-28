@@ -18,4 +18,12 @@ public interface Item {
 	 * @return
 	 */
 	public String getName();
+
+	/**
+	 * Set item weight
+	 * @param weight
+	 * @return
+	 * @throws NonWeightableItemException 
+	 */
+	public Item setWeight(Weight weight) throws NonWeightableItemException;
 }

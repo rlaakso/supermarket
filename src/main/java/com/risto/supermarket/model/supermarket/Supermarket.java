@@ -66,4 +66,26 @@ public class Supermarket {
 	public int getDiscountCount() {
 		return this.discounts.size();
 	}
+
+	/**
+	 * Create new shopping cart
+	 * @return
+	 */
+	public ShoppingCart createShoppingCart() {
+		ShoppingCart sc = new ShoppingCart(this);
+		return sc;
+	}
+
+	/**
+	 * Get stocked item by name
+	 * @param itemName
+	 * @return
+	 * @throws ItemNotStockedException 
+	 */
+	public Item getItemByName(String itemName) throws ItemNotStockedException {
+		if (!stock.containsKey(itemName)) {
+			throw new ItemNotStockedException("Item not in stock");
+		}
+		return stock.get(itemName);
+	}
 }

@@ -52,4 +52,9 @@ public final class WeightedItem implements Item {
 		return price;
 	}
 
+	@Override
+	public Item setWeight(Weight newWeight) throws NonWeightableItemException {
+		return new WeightedItem(this.name, newWeight, this.price);
+	}
+
 }
