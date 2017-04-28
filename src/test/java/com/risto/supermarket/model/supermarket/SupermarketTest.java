@@ -24,7 +24,7 @@ public class SupermarketTest {
 	}
 	
 	@Test
-	public void testCanPopulateStock() {
+	public void testCanPopulateStock() throws UnsupportedUnitException {
 		StockFactory stockFactory = new StockFactory();
 		Supermarket s = new Supermarket("Aldi");
 		stockFactory.populate(s);

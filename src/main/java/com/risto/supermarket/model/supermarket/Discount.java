@@ -12,4 +12,10 @@ public interface Discount {
 	 * @return
 	 */
 	public Money applyTo(Item item);
+
+	/**
+	 * Get discount name
+	 * @return
+	 */
+	public String getName();
 }

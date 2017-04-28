@@ -34,4 +34,8 @@ public final class PercentageDiscount implements Discount {
 		return originalPrice.multiply(1.00 - discount);
 	}
 
+	public String getName() {
+		return null;
+	}
+
 }

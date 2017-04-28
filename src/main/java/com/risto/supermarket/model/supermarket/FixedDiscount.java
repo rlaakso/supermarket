@@ -31,4 +31,8 @@ public final class FixedDiscount implements Discount {
 		return originalPrice.add(-discount);
 	}
 
+	public String getName() {
+		return null;
+	}
+
 }
