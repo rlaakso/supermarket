@@ -5,7 +5,7 @@ import java.util.Collection;
 import com.risto.supermarket.discount.api.NotEmptyException;
 import com.risto.supermarket.supermarket.api.InvalidCurrencyException;
 
-public interface Stock {
+public interface StockRepository {
 
 	/**
 	 * Add item to stock

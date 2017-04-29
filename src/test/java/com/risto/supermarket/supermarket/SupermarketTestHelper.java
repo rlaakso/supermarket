@@ -1,13 +1,13 @@
 package com.risto.supermarket.supermarket;
 
 import com.risto.supermarket.discount.DiscountTestHelper;
-import com.risto.supermarket.discount.api.DiscountList;
+import com.risto.supermarket.discount.api.DiscountRepository;
 import com.risto.supermarket.discount.api.InvalidDiscountException;
 import com.risto.supermarket.discount.api.NotEmptyException;
 import com.risto.supermarket.stock.StockTestHelper;
 import com.risto.supermarket.stock.api.ItemNotStockedException;
 import com.risto.supermarket.stock.api.NonWeightableItemException;
-import com.risto.supermarket.stock.api.Stock;
+import com.risto.supermarket.stock.api.StockRepository;
 import com.risto.supermarket.stock.api.UnsupportedUnitException;
 import com.risto.supermarket.stock.api.Weight;
 import com.risto.supermarket.supermarket.SupermarketImpl;
@@ -30,8 +30,8 @@ public class SupermarketTestHelper {
 	public static Supermarket createSupermarket(String name, String currency) throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException, InvalidCurrencyException, NotEmptyException {
 		Supermarket s = new SupermarketImpl(name, currency);
 
-		Stock stock = AppInjector.getInstance().getInstance(Stock.class);
-		DiscountList discounts = AppInjector.getInstance().getInstance(DiscountList.class);
+		StockRepository stock = AppInjector.getInstance().getInstance(StockRepository.class);
+		DiscountRepository discounts = AppInjector.getInstance().getInstance(DiscountRepository.class);
 		
 		stock.clear(); // TODO FIXME should probably use mocks/proxies instead
 		discounts.clear();

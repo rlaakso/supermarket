@@ -10,7 +10,7 @@ import com.risto.supermarket.discount.api.NotEmptyException;
 import com.risto.supermarket.stock.api.Item;
 import com.risto.supermarket.stock.api.ItemNotStockedException;
 import com.risto.supermarket.stock.api.Money;
-import com.risto.supermarket.stock.api.Stock;
+import com.risto.supermarket.stock.api.StockRepository;
 import com.risto.supermarket.supermarket.api.InvalidCurrencyException;
 
 /**
@@ -19,7 +19,7 @@ import com.risto.supermarket.supermarket.api.InvalidCurrencyException;
  *
  */
 @Singleton
-public class StockImpl implements Stock {
+public class StockRepositoryImpl implements StockRepository {
 
 	private String stockCurrency;
 	
@@ -29,7 +29,7 @@ public class StockImpl implements Stock {
 	 * Construct a new Stock
 	 * @param currency
 	 */
-	public StockImpl() {
+	public StockRepositoryImpl() {
 		this.stockCurrency = Money.DEFAULT_CURRENCY;
 		this.stock = new HashMap<String, Item>();
 	}

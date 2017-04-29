@@ -7,7 +7,7 @@ import org.junit.Test;
 import com.risto.supermarket.discount.api.NotEmptyException;
 import com.risto.supermarket.stock.api.ItemNotStockedException;
 import com.risto.supermarket.stock.api.Money;
-import com.risto.supermarket.stock.api.Stock;
+import com.risto.supermarket.stock.api.StockRepository;
 import com.risto.supermarket.supermarket.api.InvalidCurrencyException;
 
 public class StockTest {
@@ -22,26 +22,26 @@ public class StockTest {
 
 	@Test
 	public void testCanConstructStock() {
-		new StockImpl();
+		new StockRepositoryImpl();
 	}
 
 	@Test
 	public void testCanAddItemToStock() throws InvalidCurrencyException, NotEmptyException {
-		Stock s = new StockImpl();
+		StockRepository s = new StockRepositoryImpl();
 		s.changeCurrency("GBP");
 		s.addItemToStock(new SingleItem("Beans", new Money(70, "GBP")));
 	}
 
 	@Test(expected = InvalidCurrencyException.class)
 	public void testStockCurrencyHasToMatch() throws InvalidCurrencyException, NotEmptyException {
-		Stock s = new StockImpl();
+		StockRepository s = new StockRepositoryImpl();
 		s.changeCurrency("GBP");
 		s.addItemToStock(new SingleItem("Beans", new Money(70, "EUR")));
 	}
 
 	@Test(expected = ItemNotStockedException.class)
 	public void testGetNonexistentItemStock() throws InvalidCurrencyException, ItemNotStockedException, NotEmptyException {
-		Stock s = new StockImpl();
+		StockRepository s = new StockRepositoryImpl();
 		s.changeCurrency("GBP");
 		s.addItemToStock(new SingleItem("Beans", new Money(70, "GBP")));
 		s.getItemByName("Coke");
@@ -49,7 +49,7 @@ public class StockTest {
 	
 	@Test(expected = NotEmptyException.class)
 	public void testCannotChangeCurrencyForNonEmptyStorage() throws InvalidCurrencyException, NotEmptyException {
-		Stock s = new StockImpl();
+		StockRepository s = new StockRepositoryImpl();
 		s.addItemToStock(new SingleItem("Beans", new Money(70, "GBP")));
 		s.changeCurrency("INR");
 	}

@@ -4,11 +4,11 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.risto.supermarket.discount.DiscountCalculatorServiceImpl;
-import com.risto.supermarket.discount.DiscoutListImpl;
+import com.risto.supermarket.discount.DiscountRepositoryImpl;
 import com.risto.supermarket.discount.api.DiscountCalculatorService;
-import com.risto.supermarket.discount.api.DiscountList;
-import com.risto.supermarket.stock.StockImpl;
-import com.risto.supermarket.stock.api.Stock;
+import com.risto.supermarket.discount.api.DiscountRepository;
+import com.risto.supermarket.stock.StockRepositoryImpl;
+import com.risto.supermarket.stock.api.StockRepository;
 
 /**
  * Guice injector class
@@ -21,8 +21,8 @@ public class AppInjector extends AbstractModule {
 	
 	@Override
 	protected void configure() {
-		bind(Stock.class).to(StockImpl.class);
-		bind(DiscountList.class).to(DiscoutListImpl.class);
+		bind(StockRepository.class).to(StockRepositoryImpl.class);
+		bind(DiscountRepository.class).to(DiscountRepositoryImpl.class);
 		bind(DiscountCalculatorService.class).to(DiscountCalculatorServiceImpl.class);
 	}
 	

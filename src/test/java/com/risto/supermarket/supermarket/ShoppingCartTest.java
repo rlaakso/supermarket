@@ -6,7 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.risto.supermarket.discount.api.DiscountList;
+import com.risto.supermarket.discount.api.DiscountRepository;
 import com.risto.supermarket.discount.api.InvalidDiscountException;
 import com.risto.supermarket.discount.api.NotEmptyException;
 import com.risto.supermarket.stock.api.ItemNotStockedException;
@@ -96,7 +96,7 @@ public class ShoppingCartTest {
 	@Test
 	public void testTotalSavingsIsZeroWhenNoDiscountsExist() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException, InvalidCurrencyException {
 		Supermarket s = new SupermarketImpl("ICA Maxi", "SEK");
-		DiscountList discounts = AppInjector.getInstance().getInstance(DiscountList.class);
+		DiscountRepository discounts = AppInjector.getInstance().getInstance(DiscountRepository.class);
 		discounts.clear();
 		ShoppingCart empty = s.createShoppingCart();
 		assertEquals(0, empty.getSavingsTotal().getValue());

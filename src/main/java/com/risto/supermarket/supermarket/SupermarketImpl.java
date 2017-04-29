@@ -5,11 +5,11 @@ import java.util.UUID;
 
 import com.google.inject.Inject;
 import com.risto.supermarket.discount.api.Discount;
-import com.risto.supermarket.discount.api.DiscountList;
+import com.risto.supermarket.discount.api.DiscountRepository;
 import com.risto.supermarket.discount.api.DiscountNotAvailableException;
 import com.risto.supermarket.stock.api.Item;
 import com.risto.supermarket.stock.api.ItemNotStockedException;
-import com.risto.supermarket.stock.api.Stock;
+import com.risto.supermarket.stock.api.StockRepository;
 import com.risto.supermarket.supermarket.api.ShoppingCart;
 import com.risto.supermarket.supermarket.api.Supermarket;
 
@@ -30,11 +30,11 @@ public class SupermarketImpl implements Supermarket {
 	
 	// Stock
 	@Inject
-	private final Stock stock;
+	private final StockRepository stock;
 
 	// Discounts
 	@Inject
-	private final DiscountList discounts;
+	private final DiscountRepository discounts;
 
 	/**
 	 * Construct a new supermarket
@@ -47,8 +47,8 @@ public class SupermarketImpl implements Supermarket {
 		this.supermarketCurrency = currency;
 		
 		// inject Stock and Discounts
-		stock = AppInjector.getInstance().getInstance(Stock.class);
-		discounts = AppInjector.getInstance().getInstance(DiscountList.class);
+		stock = AppInjector.getInstance().getInstance(StockRepository.class);
+		discounts = AppInjector.getInstance().getInstance(DiscountRepository.class);
 	}
 
 	/* (non-Javadoc)

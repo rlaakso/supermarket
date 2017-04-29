@@ -4,7 +4,7 @@ import java.util.Collection;
 
 import com.risto.supermarket.supermarket.api.InvalidCurrencyException;
 
-public interface DiscountList {
+public interface DiscountRepository {
 
 	/**
 	 * Add discount

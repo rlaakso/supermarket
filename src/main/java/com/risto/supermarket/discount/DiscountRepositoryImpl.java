@@ -7,7 +7,7 @@ import java.util.Map;
 
 import com.google.inject.Singleton;
 import com.risto.supermarket.discount.api.Discount;
-import com.risto.supermarket.discount.api.DiscountList;
+import com.risto.supermarket.discount.api.DiscountRepository;
 import com.risto.supermarket.discount.api.DiscountNotAvailableException;
 import com.risto.supermarket.discount.api.NotEmptyException;
 import com.risto.supermarket.stock.api.Money;
@@ -19,7 +19,7 @@ import com.risto.supermarket.supermarket.api.InvalidCurrencyException;
  *
  */
 @Singleton
-public class DiscoutListImpl implements DiscountList {
+public class DiscountRepositoryImpl implements DiscountRepository {
 
 	private String discountCurrency;
 	
@@ -29,7 +29,7 @@ public class DiscoutListImpl implements DiscountList {
 	 * Create new discount
 	 * @param currency
 	 */
-	public DiscoutListImpl() {
+	public DiscountRepositoryImpl() {
 		this.discountCurrency = Money.DEFAULT_CURRENCY;
 		this.discounts = new HashMap<String, Discount>();
 	}

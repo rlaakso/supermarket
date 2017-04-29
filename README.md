@@ -1,12 +1,40 @@
 # Supermarket Kata
 
+## Design assumptions
+
+The supermarket is divided into three different services, stock and discount services for read-write access for stocked items database and discount database. Supermarket/shopping cart service provides read-only access to stocked items and discounts, and capability to create and use shopping carts. 
+
+
+Items, Money, and Discounts are value objects used to model the stock and discounts.
+
+ShoppingCart is an entity object which models shopping cart in a supermarket.
+
+Supermarket is an aggregate object which models stock, discounts and shopping carts.
+
+Domain events are not modelled.
+
+ShoppingCart could be modified to use event sourcing, but at the moment it's just a snapshot of the cart contents.
+
+StockRepository and DiscountRepository are repositories for storing stocked items and discounts.
+
+DiscountCalculatorService is a service to calculate which discounts apply to a shopping cart. 
+
+The design follows CQRS, where Supermarket is a query interface to stocked items and discounts, and StockRepository and DiscountRepository provide commands to alter stocked items and active discounts. 
+
+
+
+### Compromises
+
+- Some of the API classes are shared between the APIs, and should probably be moved to a separate common api package.
+
+
 ## Services
 
-com.risto.supermarket.discount[.api] - Discount storage service, used for adding discounts (rw)
+com.risto.supermarket.discount[.api] - Discount repository service, used for adding discounts (rw).
 
-com.risto.supermarket.stock[.api] - Stock storage service, used for adding stock items (rw)
+com.risto.supermarket.stock[.api] - Stock repository service, used for adding stock items (rw).
 
-com.risto.supermarket.supermarket[.api] - Supermarket and shopping cart service, used for querying stock and discounts (ro)
+com.risto.supermarket.supermarket[.api] - Supermarket and shopping cart service, used for querying stock and discounts (ro), and to access shopping carts.
 
 
 

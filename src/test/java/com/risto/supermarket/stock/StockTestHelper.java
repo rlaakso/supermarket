@@ -1,7 +1,7 @@
 package com.risto.supermarket.stock;
 
 import com.risto.supermarket.stock.api.Money;
-import com.risto.supermarket.stock.api.Stock;
+import com.risto.supermarket.stock.api.StockRepository;
 import com.risto.supermarket.stock.api.UnsupportedUnitException;
 import com.risto.supermarket.stock.api.Weight;
 import com.risto.supermarket.supermarket.AppInjector;
@@ -16,7 +16,7 @@ public class StockTestHelper {
 	 * @throws InvalidCurrencyException 
 	 */
 	public static void populateSupermarketStock(String currency) throws UnsupportedUnitException, InvalidCurrencyException {
-		Stock s = AppInjector.getInstance().getInstance(Stock.class);
+		StockRepository s = AppInjector.getInstance().getInstance(StockRepository.class);
 		s.addItemToStock(new SingleItem("Beans", new Money(50, currency)));
 		s.addItemToStock(new SingleItem("Coke", new Money(70, currency)));
 		s.addItemToStock(new WeightedItem("Oranges", new Weight(0.0, "kg"), new Money(199, currency)));
