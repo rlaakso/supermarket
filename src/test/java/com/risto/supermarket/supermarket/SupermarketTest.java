@@ -1,20 +1,17 @@
 package com.risto.supermarket.supermarket;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import com.risto.supermarket.discount.DiscountTestHelper;
-import com.risto.supermarket.discount.api.DiscountList;
 import com.risto.supermarket.discount.api.InvalidDiscountException;
 import com.risto.supermarket.discount.api.NotEmptyException;
 import com.risto.supermarket.stock.StockTestHelper;
 import com.risto.supermarket.stock.api.ItemNotStockedException;
-import com.risto.supermarket.stock.api.Stock;
 import com.risto.supermarket.stock.api.UnsupportedUnitException;
-import com.risto.supermarket.supermarket.SupermarketImpl;
 import com.risto.supermarket.supermarket.api.InvalidCurrencyException;
 import com.risto.supermarket.supermarket.api.Supermarket;
 
@@ -52,7 +49,7 @@ public class SupermarketTest {
 	
 	@Test(expected = InvalidCurrencyException.class)
 	public void testItemCurrencyHasToMatch() throws InvalidDiscountException, ItemNotStockedException, UnsupportedUnitException, InvalidCurrencyException, NotEmptyException {
-		Supermarket s = SupermarketTestHelper.createSupermarket("Whole Foods", "USD");
+		SupermarketTestHelper.createSupermarket("Whole Foods", "USD");
 		StockTestHelper.populateSupermarketStock("EUR");
 	}
 

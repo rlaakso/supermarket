@@ -1,18 +1,13 @@
 package com.risto.supermarket.discount;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Modifier;
 import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.risto.supermarket.discount.DiscountImpl;
-import com.risto.supermarket.discount.DiscountCalculatorServiceImpl;
 import com.risto.supermarket.discount.api.Discount;
 import com.risto.supermarket.discount.api.DiscountCalculatorService;
 import com.risto.supermarket.discount.api.DiscountNotAvailableException;

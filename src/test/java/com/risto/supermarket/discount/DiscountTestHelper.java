@@ -1,12 +1,9 @@
 package com.risto.supermarket.discount;
 
-import com.risto.supermarket.discount.ThreeForTwoDiscount;
-import com.risto.supermarket.discount.TwoForOnePoundDiscount;
 import com.risto.supermarket.discount.api.DiscountList;
 import com.risto.supermarket.discount.api.InvalidDiscountException;
 import com.risto.supermarket.stock.api.ItemNotStockedException;
 import com.risto.supermarket.stock.api.Money;
-import com.risto.supermarket.stock.api.Stock;
 import com.risto.supermarket.supermarket.AppInjector;
 import com.risto.supermarket.supermarket.api.InvalidCurrencyException;
 import com.risto.supermarket.supermarket.api.Supermarket;
