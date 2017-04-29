@@ -1,5 +1,7 @@
 package com.risto.supermarket.stock;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,14 +46,6 @@ public class StockImpl implements Stock {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.risto.supermarket.model.stock.ISTock#getNumberOfItemsInStock()
-	 */
-	@Override
-	public int getNumberOfItemsInStock() {
-		return stock.size();
-	}
-
-	/* (non-Javadoc)
 	 * @see com.risto.supermarket.model.stock.ISTock#getItemByName(java.lang.String)
 	 */
 	@Override
@@ -73,5 +67,10 @@ public class StockImpl implements Stock {
 	@Override
 	public void clear() {
 		this.stock.clear();
+	}
+
+	@Override
+	public Collection<Item> getAllStockedItems() {
+		return Collections.unmodifiableCollection(stock.values());
 	}
 }

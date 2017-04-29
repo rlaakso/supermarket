@@ -36,7 +36,7 @@ public class SupermarketTest {
 		Supermarket s = SupermarketTestHelper.createSupermarket("Zona Sul", "BRL");
 		StockTestHelper.populateSupermarketStock(s.getCurrency());
 		assertEquals("Beans", s.getItemByName("Beans").getName());
-		assertEquals(3, s.getItemCount());
+		assertEquals(3, s.getStockedItems().size());
 	}
 
 	@Test
@@ -44,7 +44,7 @@ public class SupermarketTest {
 		Supermarket s = SupermarketTestHelper.createSupermarket("KaDeWe", "EUR");
 		StockTestHelper.populateSupermarketStock(s.getCurrency());
 		DiscountTestHelper.populateSupermarketDiscounts(s, s.getCurrency());
-		assertEquals(2, s.getDiscountCount());
+		assertEquals(2, s.getDiscounts().size());
 	}
 	
 	@Test(expected = InvalidCurrencyException.class)

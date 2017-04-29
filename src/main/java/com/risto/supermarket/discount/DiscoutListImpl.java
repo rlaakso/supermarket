@@ -46,14 +46,6 @@ public class DiscoutListImpl implements DiscountList {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.risto.supermarket.model.discount.IDiscounts#getNumberOfDiscounts()
-	 */
-	@Override
-	public int getNumberOfDiscounts() {
-		return this.discounts.size();
-	}
-
-	/* (non-Javadoc)
 	 * @see com.risto.supermarket.model.discount.IDiscounts#getDiscountByName(java.lang.String)
 	 */
 	@Override

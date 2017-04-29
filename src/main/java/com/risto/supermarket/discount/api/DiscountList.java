@@ -14,12 +14,6 @@ public interface DiscountList {
 	void addDiscount(Discount discount) throws InvalidCurrencyException;
 
 	/**
-	 * Get number of active discounts
-	 * @return
-	 */
-	int getNumberOfDiscounts();
-
-	/**
 	 * Get discount by name
 	 * @param discountName
 	 * @return

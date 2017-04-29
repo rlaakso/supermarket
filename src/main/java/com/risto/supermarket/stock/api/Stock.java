@@ -1,5 +1,7 @@
 package com.risto.supermarket.stock.api;
 
+import java.util.Collection;
+
 import com.risto.supermarket.discount.api.NotEmptyException;
 import com.risto.supermarket.supermarket.api.InvalidCurrencyException;
 
@@ -11,12 +13,6 @@ public interface Stock {
 	 * @throws InvalidCurrencyException
 	 */
 	void addItemToStock(Item item) throws InvalidCurrencyException;
-
-	/**
-	 * Return number of items in stock
-	 * @return
-	 */
-	int getNumberOfItemsInStock();
 
 	/**
 	 * Return stocked item by name
@@ -35,4 +31,10 @@ public interface Stock {
 	 * Clear stock.
 	 */
 	void clear();
+
+	/**
+	 * Return all stocked items
+	 * @return
+	 */
+	Collection<Item> getAllStockedItems();
 }

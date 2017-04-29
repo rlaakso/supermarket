@@ -60,28 +60,11 @@ public class SupermarketImpl implements Supermarket {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.risto.supermarket.supermarket.Supermarket#getItemCount()
-	 */
-	@Override
-	public int getItemCount() {
-		return stock.getNumberOfItemsInStock();
-	}
-
-	/* (non-Javadoc)
 	 * @see com.risto.supermarket.supermarket.Supermarket#getItemByName(java.lang.String)
 	 */
 	@Override
 	public Item getItemByName(String itemName) throws ItemNotStockedException {
 		return stock.getItemByName(itemName);
-	}
-
-	
-	/* (non-Javadoc)
-	 * @see com.risto.supermarket.supermarket.Supermarket#getDiscountCount()
-	 */
-	@Override
-	public int getDiscountCount() {
-		return discounts.getNumberOfDiscounts();
 	}
 
 	/* (non-Javadoc)
@@ -111,5 +94,10 @@ public class SupermarketImpl implements Supermarket {
 	@Override
 	public ShoppingCart createShoppingCart() {
 		return new ShoppingCartImpl(this);
+	}
+
+	@Override
+	public Collection<Item> getStockedItems() {
+		return stock.getAllStockedItems();
 	}
 }

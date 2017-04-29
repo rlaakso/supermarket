@@ -24,24 +24,12 @@ public interface Supermarket {
 	String getName();
 
 	/**
-	 * Get number of stocked items
-	 * @return
-	 */
-	int getItemCount();
-
-	/**
 	 * Get stocked item by name
 	 * @param itemName
 	 * @return
 	 * @throws ItemNotStockedException 
 	 */
 	Item getItemByName(String itemName) throws ItemNotStockedException;
-
-	/**
-	 * Get number of active discounts
-	 * @return
-	 */
-	int getDiscountCount();
 
 	/**
 	 * Get discount by name
@@ -68,4 +56,10 @@ public interface Supermarket {
 	 * @return
 	 */
 	ShoppingCart createShoppingCart();
+
+	/**
+	 * Return stocked items
+	 * @return
+	 */
+	Collection<Item> getStockedItems();
 }
