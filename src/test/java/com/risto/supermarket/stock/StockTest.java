@@ -4,9 +4,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.risto.supermarket.common.api.Money;
 import com.risto.supermarket.discount.api.NotEmptyException;
 import com.risto.supermarket.stock.api.ItemNotStockedException;
-import com.risto.supermarket.stock.api.Money;
 import com.risto.supermarket.stock.api.StockRepository;
 import com.risto.supermarket.supermarket.api.InvalidCurrencyException;
 

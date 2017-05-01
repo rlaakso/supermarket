@@ -1,6 +1,6 @@
 package com.risto.supermarket.discount.api;
 
-import com.risto.supermarket.stock.api.Money;
+import com.risto.supermarket.common.api.Money;
 
 public interface Discount {
 

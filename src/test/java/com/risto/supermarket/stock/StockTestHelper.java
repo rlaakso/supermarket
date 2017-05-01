@@ -1,10 +1,10 @@
 package com.risto.supermarket.stock;
 
-import com.risto.supermarket.stock.api.Money;
+import com.risto.supermarket.common.AppInjector;
+import com.risto.supermarket.common.api.Money;
 import com.risto.supermarket.stock.api.StockRepository;
 import com.risto.supermarket.stock.api.UnsupportedUnitException;
 import com.risto.supermarket.stock.api.Weight;
-import com.risto.supermarket.supermarket.AppInjector;
 import com.risto.supermarket.supermarket.api.InvalidCurrencyException;
 
 public class StockTestHelper {

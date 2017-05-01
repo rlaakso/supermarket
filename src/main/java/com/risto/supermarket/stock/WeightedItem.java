@@ -1,7 +1,7 @@
 package com.risto.supermarket.stock;
 
+import com.risto.supermarket.common.api.Money;
 import com.risto.supermarket.stock.api.Item;
-import com.risto.supermarket.stock.api.Money;
 import com.risto.supermarket.stock.api.NonWeightableItemException;
 import com.risto.supermarket.stock.api.Weight;
 

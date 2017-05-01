@@ -1,5 +1,7 @@
 package com.risto.supermarket.stock.api;
 
+import com.risto.supermarket.common.api.Money;
+
 /**
  * Interface for supermarket items
  * @author Risto Laakso <risto.laakso@iki.fi>

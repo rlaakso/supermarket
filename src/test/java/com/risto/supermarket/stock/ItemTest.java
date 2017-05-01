@@ -6,9 +6,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.risto.supermarket.common.api.Money;
 import com.risto.supermarket.stock.SingleItem;
 import com.risto.supermarket.stock.WeightedItem;
-import com.risto.supermarket.stock.api.Money;
 import com.risto.supermarket.stock.api.NonWeightableItemException;
 import com.risto.supermarket.stock.api.UnsupportedUnitException;
 import com.risto.supermarket.stock.api.Weight;

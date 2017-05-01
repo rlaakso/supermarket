@@ -6,16 +6,17 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.risto.supermarket.common.AppInjector;
+import com.risto.supermarket.common.api.Money;
 import com.risto.supermarket.discount.api.DiscountRepository;
 import com.risto.supermarket.discount.api.InvalidDiscountException;
 import com.risto.supermarket.discount.api.NotEmptyException;
+import com.risto.supermarket.shoppingcart.api.ShoppingCart;
 import com.risto.supermarket.stock.api.ItemNotStockedException;
-import com.risto.supermarket.stock.api.Money;
 import com.risto.supermarket.stock.api.NonWeightableItemException;
 import com.risto.supermarket.stock.api.UnsupportedUnitException;
 import com.risto.supermarket.supermarket.SupermarketImpl;
 import com.risto.supermarket.supermarket.api.InvalidCurrencyException;
-import com.risto.supermarket.supermarket.api.ShoppingCart;
 import com.risto.supermarket.supermarket.api.Supermarket;
 
 public class ShoppingCartTest {
@@ -31,20 +32,20 @@ public class ShoppingCartTest {
 	@Test
 	public void testCanConstructShoppingCart() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException, InvalidCurrencyException, NotEmptyException {
 		Supermarket s = SupermarketTestHelper.createSupermarket("ICA Maxi", "SEK");
-		s.createShoppingCart();
+		SupermarketTestHelper.createShoppingCart(s);
 	}
 	
 	private ShoppingCart createShoppingCart() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException, NonWeightableItemException, InvalidCurrencyException, NotEmptyException {
 		Supermarket s = SupermarketTestHelper.createSupermarket("ICA Maxi", "SEK");
 		
-		ShoppingCart sc = s.createShoppingCart();
+		ShoppingCart sc = SupermarketTestHelper.createShoppingCart(s);
 		SupermarketTestHelper.populateCart(sc, s);
 		return sc;
 	}
 	
 	private ShoppingCart createEmptyCart() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException, InvalidCurrencyException, NotEmptyException {
 		Supermarket s = SupermarketTestHelper.createSupermarket("ICA Maxi", "SEK");
-		return s.createShoppingCart();
+		return SupermarketTestHelper.createShoppingCart(s);
 	}
 	
 	@Test
@@ -98,7 +99,7 @@ public class ShoppingCartTest {
 		Supermarket s = new SupermarketImpl("ICA Maxi", "SEK");
 		DiscountRepository discounts = AppInjector.getInstance().getInstance(DiscountRepository.class);
 		discounts.clear();
-		ShoppingCart empty = s.createShoppingCart();
+		ShoppingCart empty = SupermarketTestHelper.createShoppingCart(s);
 		assertEquals(0, empty.getSavingsTotal().getValue());
 	}
 

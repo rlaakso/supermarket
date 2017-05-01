@@ -6,7 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.risto.supermarket.stock.api.Money;
+import com.risto.supermarket.common.api.Money;
 
 public class MoneyTest {
 

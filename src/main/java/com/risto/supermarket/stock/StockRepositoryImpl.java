@@ -6,10 +6,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.google.inject.Singleton;
+import com.risto.supermarket.common.api.Money;
 import com.risto.supermarket.discount.api.NotEmptyException;
 import com.risto.supermarket.stock.api.Item;
 import com.risto.supermarket.stock.api.ItemNotStockedException;
-import com.risto.supermarket.stock.api.Money;
 import com.risto.supermarket.stock.api.StockRepository;
 import com.risto.supermarket.supermarket.api.InvalidCurrencyException;
 

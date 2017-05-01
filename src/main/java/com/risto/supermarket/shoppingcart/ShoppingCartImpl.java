@@ -1,17 +1,18 @@
-package com.risto.supermarket.supermarket;
+package com.risto.supermarket.shoppingcart;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
+import com.risto.supermarket.common.AppInjector;
+import com.risto.supermarket.common.api.Money;
 import com.risto.supermarket.discount.api.Discount;
 import com.risto.supermarket.discount.api.DiscountCalculatorService;
+import com.risto.supermarket.shoppingcart.api.ShoppingCart;
 import com.risto.supermarket.stock.api.Item;
-import com.risto.supermarket.stock.api.Money;
 import com.risto.supermarket.stock.api.NonWeightableItemException;
 import com.risto.supermarket.stock.api.Weight;
-import com.risto.supermarket.supermarket.api.ShoppingCart;
 import com.risto.supermarket.supermarket.api.Supermarket;
 
 /**

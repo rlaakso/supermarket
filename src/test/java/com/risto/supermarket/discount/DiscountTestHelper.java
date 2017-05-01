@@ -1,10 +1,10 @@
 package com.risto.supermarket.discount;
 
+import com.risto.supermarket.common.AppInjector;
+import com.risto.supermarket.common.api.Money;
 import com.risto.supermarket.discount.api.DiscountRepository;
 import com.risto.supermarket.discount.api.InvalidDiscountException;
 import com.risto.supermarket.stock.api.ItemNotStockedException;
-import com.risto.supermarket.stock.api.Money;
-import com.risto.supermarket.supermarket.AppInjector;
 import com.risto.supermarket.supermarket.api.InvalidCurrencyException;
 import com.risto.supermarket.supermarket.api.Supermarket;
 

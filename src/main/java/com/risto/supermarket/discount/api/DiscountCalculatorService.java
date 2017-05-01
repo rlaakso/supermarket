@@ -2,7 +2,7 @@ package com.risto.supermarket.discount.api;
 
 import java.util.List;
 
-import com.risto.supermarket.supermarket.api.ShoppingCart;
+import com.risto.supermarket.shoppingcart.api.ShoppingCart;
 
 public interface DiscountCalculatorService {
 

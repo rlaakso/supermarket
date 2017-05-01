@@ -6,11 +6,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.google.inject.Singleton;
+import com.risto.supermarket.common.api.Money;
 import com.risto.supermarket.discount.api.Discount;
 import com.risto.supermarket.discount.api.DiscountRepository;
 import com.risto.supermarket.discount.api.DiscountNotAvailableException;
 import com.risto.supermarket.discount.api.NotEmptyException;
-import com.risto.supermarket.stock.api.Money;
 import com.risto.supermarket.supermarket.api.InvalidCurrencyException;
 
 /**

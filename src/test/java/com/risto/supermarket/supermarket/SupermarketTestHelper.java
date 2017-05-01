@@ -1,9 +1,12 @@
 package com.risto.supermarket.supermarket;
 
+import com.risto.supermarket.common.AppInjector;
 import com.risto.supermarket.discount.DiscountTestHelper;
 import com.risto.supermarket.discount.api.DiscountRepository;
 import com.risto.supermarket.discount.api.InvalidDiscountException;
 import com.risto.supermarket.discount.api.NotEmptyException;
+import com.risto.supermarket.shoppingcart.api.ShoppingCart;
+import com.risto.supermarket.shoppingcart.api.ShoppingCartService;
 import com.risto.supermarket.stock.StockTestHelper;
 import com.risto.supermarket.stock.api.ItemNotStockedException;
 import com.risto.supermarket.stock.api.NonWeightableItemException;
@@ -12,7 +15,6 @@ import com.risto.supermarket.stock.api.UnsupportedUnitException;
 import com.risto.supermarket.stock.api.Weight;
 import com.risto.supermarket.supermarket.SupermarketImpl;
 import com.risto.supermarket.supermarket.api.InvalidCurrencyException;
-import com.risto.supermarket.supermarket.api.ShoppingCart;
 import com.risto.supermarket.supermarket.api.Supermarket;
 
 public class SupermarketTestHelper {
@@ -44,6 +46,13 @@ public class SupermarketTestHelper {
 		return s;
 	}
 
+	
+	public static ShoppingCart createShoppingCart(Supermarket s) {
+		ShoppingCartService cartService = AppInjector.getInstance().getInstance(ShoppingCartService.class);
+		return cartService.create(s);
+	}
+	
+	
 	/**
 	 * Populate shopping cart with some items
 	 * @param sc

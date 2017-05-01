@@ -1,9 +1,10 @@
-package com.risto.supermarket.supermarket.api;
+package com.risto.supermarket.shoppingcart.api;
 
+import com.risto.supermarket.common.api.Money;
 import com.risto.supermarket.stock.api.Item;
-import com.risto.supermarket.stock.api.Money;
 import com.risto.supermarket.stock.api.NonWeightableItemException;
 import com.risto.supermarket.stock.api.Weight;
+import com.risto.supermarket.supermarket.api.Supermarket;
 
 /**
  * Shopping cart API
@@ -11,7 +12,7 @@ import com.risto.supermarket.stock.api.Weight;
  *
  */
 public interface ShoppingCart {
-	
+		
 	/**
 	 * Add item to cart
 	 * @param item

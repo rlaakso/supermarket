@@ -8,18 +8,18 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.risto.supermarket.common.AppInjector;
 import com.risto.supermarket.discount.api.Discount;
 import com.risto.supermarket.discount.api.DiscountCalculatorService;
 import com.risto.supermarket.discount.api.DiscountNotAvailableException;
 import com.risto.supermarket.discount.api.InvalidDiscountException;
 import com.risto.supermarket.discount.api.NotEmptyException;
+import com.risto.supermarket.shoppingcart.api.ShoppingCart;
 import com.risto.supermarket.stock.api.ItemNotStockedException;
 import com.risto.supermarket.stock.api.NonWeightableItemException;
 import com.risto.supermarket.stock.api.UnsupportedUnitException;
-import com.risto.supermarket.supermarket.AppInjector;
 import com.risto.supermarket.supermarket.SupermarketTestHelper;
 import com.risto.supermarket.supermarket.api.InvalidCurrencyException;
-import com.risto.supermarket.supermarket.api.ShoppingCart;
 import com.risto.supermarket.supermarket.api.Supermarket;
 
 public class DiscountCalculatorTest {
@@ -38,7 +38,7 @@ public class DiscountCalculatorTest {
 	@Test
 	public void testCanApplyTwoForOneDiscount() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException, NonWeightableItemException, DiscountNotAvailableException, InvalidCurrencyException, NotEmptyException {
 		Supermarket s = SupermarketTestHelper.createSupermarket("ICA Maxi", "SEK");
-		ShoppingCart sc = s.createShoppingCart();
+		ShoppingCart sc = SupermarketTestHelper.createShoppingCart(s);
 		SupermarketTestHelper.populateCart(sc, s);
 
 		
@@ -50,7 +50,7 @@ public class DiscountCalculatorTest {
 	@Test
 	public void testCanApplyTwoForOnePoundDiscount() throws UnsupportedUnitException, InvalidDiscountException, ItemNotStockedException, NonWeightableItemException, DiscountNotAvailableException, InvalidCurrencyException, NotEmptyException {
 		Supermarket s = SupermarketTestHelper.createSupermarket("ICA Maxi", "SEK");
-		ShoppingCart sc = s.createShoppingCart();
+		ShoppingCart sc = SupermarketTestHelper.createShoppingCart(s);
 		SupermarketTestHelper.populateCart(sc, s);
 
 		List<Discount> discounts = dcs.calculateDiscountFor(sc, s.getDiscountByName("Coke 2 for £1"));

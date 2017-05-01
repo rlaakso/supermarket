@@ -1,7 +1,7 @@
 package com.risto.supermarket.discount;
 
+import com.risto.supermarket.common.api.Money;
 import com.risto.supermarket.discount.api.Discount;
-import com.risto.supermarket.stock.api.Money;
 
 /**
  * Discount abstract class

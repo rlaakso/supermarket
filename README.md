@@ -25,7 +25,11 @@ The design follows CQRS, where Supermarket is a query interface to stocked items
 
 ### Compromises
 
-- Some of the API classes are shared between the APIs, and should probably be moved to a separate common api package.
+- Items in shopping cart don't have local id's.
+
+- Domain events are not modelled
+
+- Shopping cart could use event sourcing
 
 
 ## Services
@@ -34,8 +38,9 @@ com.risto.supermarket.discount[.api] - Discount repository service, used for add
 
 com.risto.supermarket.stock[.api] - Stock repository service, used for adding stock items (rw).
 
-com.risto.supermarket.supermarket[.api] - Supermarket and shopping cart service, used for querying stock and discounts (ro), and to access shopping carts.
+com.risto.supermarket.supermarket[.api] - Supermarket service, used for querying stock and discounts (ro).
 
+com.risto.supermarket.shoppingcart[.api] - Shopping cart service, used to access shopping carts.
 
 
 ## REST API draft
@@ -82,12 +87,14 @@ GET /supermarket/api/v1/supermarket/discounts        - Get discounts
 GET /supermarket/api/v1/supermarket/discounts/{name} - Get discount by name
 
 
-POST /supermarket/api/v1/supermarket/cart        - Create new shopping cart
+### Shopping Cart API
 
-GET /supermarket/api/v1/supermarket/cart/{uuid}  - Get shopping cart contents and sub-total, savings, and total to pay info
+POST /shoppingcart/api/v1/cart        - Create new shopping cart
 
-PUT /supermarket/api/v1/supermarket/cart/{uuid}/item/{name}  - Add item to shopping cart
+GET /shoppingcart/api/v1/cart/{uuid}  - Get shopping cart contents and sub-total, savings, and total to pay info
 
-DELETE /supermarket/api/v1/supermarket/cart/{uuid}/item/{name}  - Remove item from shopping cart
+PUT /shoppingcart/api/v1/cart/{uuid}/item/{name}  - Add item to shopping cart
+
+DELETE /shoppingcart/api/v1/cart/{uuid}/item/{name}  - Remove item from shopping cart
 
 

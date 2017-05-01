@@ -52,12 +52,6 @@ public interface Supermarket {
 	String getCurrency();
 
 	/**
-	 * Create a new shopping cart
-	 * @return
-	 */
-	ShoppingCart createShoppingCart();
-
-	/**
 	 * Return stocked items
 	 * @return
 	 */

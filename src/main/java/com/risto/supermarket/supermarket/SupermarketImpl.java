@@ -4,13 +4,13 @@ import java.util.Collection;
 import java.util.UUID;
 
 import com.google.inject.Inject;
+import com.risto.supermarket.common.AppInjector;
 import com.risto.supermarket.discount.api.Discount;
-import com.risto.supermarket.discount.api.DiscountRepository;
 import com.risto.supermarket.discount.api.DiscountNotAvailableException;
+import com.risto.supermarket.discount.api.DiscountRepository;
 import com.risto.supermarket.stock.api.Item;
 import com.risto.supermarket.stock.api.ItemNotStockedException;
 import com.risto.supermarket.stock.api.StockRepository;
-import com.risto.supermarket.supermarket.api.ShoppingCart;
 import com.risto.supermarket.supermarket.api.Supermarket;
 
 /**
@@ -91,11 +91,6 @@ public class SupermarketImpl implements Supermarket {
 		return supermarketCurrency;
 	}
 	
-	@Override
-	public ShoppingCart createShoppingCart() {
-		return new ShoppingCartImpl(this);
-	}
-
 	@Override
 	public Collection<Item> getStockedItems() {
 		return stock.getAllStockedItems();

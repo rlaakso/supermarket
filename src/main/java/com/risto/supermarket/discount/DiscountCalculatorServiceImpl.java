@@ -6,7 +6,7 @@ import java.util.List;
 import com.google.inject.Singleton;
 import com.risto.supermarket.discount.api.Discount;
 import com.risto.supermarket.discount.api.DiscountCalculatorService;
-import com.risto.supermarket.supermarket.api.ShoppingCart;
+import com.risto.supermarket.shoppingcart.api.ShoppingCart;
 
 /**
  * Discount calculator service to calculate discounts for items in shopping cart

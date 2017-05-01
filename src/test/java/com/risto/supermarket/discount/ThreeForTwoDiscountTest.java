@@ -6,9 +6,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.risto.supermarket.common.api.Money;
 import com.risto.supermarket.discount.ThreeForTwoDiscount;
 import com.risto.supermarket.discount.api.InvalidDiscountException;
-import com.risto.supermarket.stock.api.Money;
 
 public class ThreeForTwoDiscountTest {
 
