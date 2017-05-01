@@ -9,7 +9,7 @@ Items, Money, and Discounts are value objects used to model the stock and discou
 
 ShoppingCart is an entity object which models shopping cart in a supermarket.
 
-Supermarket is an aggregate object which models stock, discounts and shopping carts.
+Supermarket is an aggregate object which models stock and discounts.
 
 Domain events are not modelled.
 
