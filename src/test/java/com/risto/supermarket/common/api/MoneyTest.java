@@ -1,4 +1,4 @@
-package com.risto.supermarket.stock.api;
+package com.risto.supermarket.common.api;
 
 import static org.junit.Assert.*;
 

@@ -18,9 +18,9 @@ public class DiscountTestHelper {
 	 * @throws InvalidCurrencyException 
 	 */
 	public static void populateSupermarketDiscounts(Supermarket s, String currency) throws InvalidDiscountException, ItemNotStockedException, InvalidCurrencyException {
-		DiscountRepository d = AppInjector.getInstance().getInstance(DiscountRepository.class);
-		d.addDiscount(new ThreeForTwoDiscount("Beans 3 for 2", "Beans", 3, 2, s.getItemByName("Beans").getPrice()));
-		d.addDiscount(new TwoForOnePoundDiscount("Coke 2 for £1", "Coke", 2, new Money(100, currency), s.getItemByName("Coke").getPrice()));
+		DiscountRepository repo = AppInjector.getInstance().getInstance(DiscountRepository.class);
+		repo.addDiscount(new ThreeForTwoDiscount("Beans 3 for 2", "Beans", 3, 2, s.getItemByName("Beans").getPrice()));
+		repo.addDiscount(new TwoForOnePoundDiscount("Coke 2 for £1", "Coke", 2, new Money(100, currency), s.getItemByName("Coke").getPrice()));
 	}
 
 }
