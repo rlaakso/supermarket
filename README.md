@@ -27,9 +27,9 @@ The design follows CQRS, where Supermarket is a query interface to stocked items
 
 - Items in shopping cart don't have local id's.
 
-- Domain events are not modelled
+- Domain events are not modelled.
 
-- Shopping cart could use event sourcing
+- Shopping cart could use event sourcing.
 
 
 ## Services
@@ -47,54 +47,54 @@ com.risto.supermarket.shoppingcart[.api] - Shopping cart service, used to access
 
 ### Discounts API
 
-GET /discounts/api/v1/discount/{name}   - Get discount by name
+GET /discounts/api/v1/discount/{name}   - Get discount by name.
 
-POST /discounts/api/v1/discount/{name}  - Add new discount
-
-
-GET /discounts/api/v1/discount  		- Get all discounts
-
-DELETE /discounts/api/v1/discount  		- Delete all discounts
+POST /discounts/api/v1/discount/{name}  - Add a new discount.
 
 
-POST /discounts/api/v1/discount/calculate  - Calculate savings for items
+GET /discounts/api/v1/discount  		- Get all discounts.
+
+DELETE /discounts/api/v1/discount  		- Delete all discounts.
+
+
+POST /discounts/api/v1/discount/calculate  - Calculate savings for shopping cart items.
 
 
 ### Stock API
 
-GET /stock/api/v1/stock/{name}   - Get stocked item by name
+GET /stock/api/v1/stock/{name}   - Get stocked item by name.
 
-POST /stock/api/v1/stock/{name}  - Add new item to stock
+POST /stock/api/v1/stock/{name}  - Add a new item to stock.
 
 
-GET /stock/api/v1/stock  		 - Get all stocked items
+GET /stock/api/v1/stock  		 - Get all stocked items.
 
-DELETE /stock/api/v1/stock  	 - Delete all stocked items
+DELETE /stock/api/v1/stock  	 - Delete all stocked items.
 
 
 ### Supermarket API
 
-GET /supermarket/api/v1/supermarket              - Get supermarket name, currency, and uuid
+GET /supermarket/api/v1/supermarket              - Get supermarket name, currency, and uuid.
 
 
-GET /supermarket/api/v1/supermarket/stock        - Get stocked items
+GET /supermarket/api/v1/supermarket/stock        - Get all stocked items.
 
-GET /supermarket/api/v1/supermarket/stock/{name} - Get stocked item by name
+GET /supermarket/api/v1/supermarket/stock/{name} - Get stocked item by name.
 
 
-GET /supermarket/api/v1/supermarket/discounts        - Get discounts
+GET /supermarket/api/v1/supermarket/discounts        - Get all discounts.
 
-GET /supermarket/api/v1/supermarket/discounts/{name} - Get discount by name
+GET /supermarket/api/v1/supermarket/discounts/{name} - Get discount by name.
 
 
 ### Shopping Cart API
 
-POST /shoppingcart/api/v1/cart        - Create new shopping cart
+POST /shoppingcart/api/v1/cart        - Create a new shopping cart.
 
-GET /shoppingcart/api/v1/cart/{uuid}  - Get shopping cart contents and sub-total, savings, and total to pay info
+GET /shoppingcart/api/v1/cart/{uuid}  - Get shopping cart contents, sub-total, savings, and total to pay.
 
-PUT /shoppingcart/api/v1/cart/{uuid}/item/{name}  - Add item to shopping cart
+PUT /shoppingcart/api/v1/cart/{uuid}/item/{name}  - Add item to a shopping cart.
 
-DELETE /shoppingcart/api/v1/cart/{uuid}/item/{name}  - Remove item from shopping cart
+DELETE /shoppingcart/api/v1/cart/{uuid}/item/{name}  - Remove item from a shopping cart.
 
 
